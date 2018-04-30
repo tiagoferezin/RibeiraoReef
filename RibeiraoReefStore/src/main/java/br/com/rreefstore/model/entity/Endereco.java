@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.com.rreefstore.model.enumerador.EEstado;
 import br.com.rreefstore.model.enumerador.ETipoEndereco;
@@ -54,8 +56,10 @@ public class Endereco extends AEntity<Endereco> {
 	private String cep;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 
 	public Endereco() {

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.com.rreefstore.model.entity.AEntity;
 
@@ -42,8 +44,9 @@ public class ClienteMasterHelpReef extends AEntity<ClienteMasterHelpReef> {
 	private String nomeCompleto;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
-
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 
 	public ClienteMasterHelpReef() {
