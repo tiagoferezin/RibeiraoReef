@@ -130,7 +130,8 @@ public class GenericDAO {
 	}
 
 	Class<AEntity> getClassT() throws Exception {
-		ParameterizedType superclass = (ParameterizedType) getClass().getGenericSuperclass();
+		ParameterizedType superclass = (ParameterizedType) getClass()
+				.getGenericSuperclass();
 
 		return (Class<AEntity>) superclass.getActualTypeArguments()[0];
 	}
@@ -144,8 +145,8 @@ public class GenericDAO {
 
 	private void initializeEntityManager() throws Exception {
 		if ((entityManager == null) || (!entityManager.isOpen())) {
-			throw new Exception(
-					"O entityManager do acesso a dados da " + entity.getClass() + " está fechado ou é nulo.");
+			throw new Exception("O entityManager do acesso a dados da "
+					+ entity.getClass() + " está fechado ou é nulo.");
 		}
 	}
 
@@ -225,7 +226,8 @@ public class GenericDAO {
 				entity.setDataDesativacao(Calendar.getInstance());
 				entityManager.merge(this.entity);
 			} else {
-				entityManager.remove(entityManager.getReference(entity.getClass(), entity.getId()));
+				entityManager.remove(entityManager.getReference(
+						entity.getClass(), entity.getId()));
 			}
 
 			if (entityManager.getTransaction().isActive()) {
@@ -256,13 +258,16 @@ public class GenericDAO {
 
 	}
 
-	public Long count(AEntity entity, String userName, EntityManager entityManager) throws Exception {
-		String hQl = "select count(*) from " + entity.getClass().getSimpleName() + " t";
+	public Long count(AEntity entity, String userName,
+			EntityManager entityManager) throws Exception {
+		String hQl = "select count(*) from "
+				+ entity.getClass().getSimpleName() + " t";
 
 		return readAtt(entity, entityManager, hQl);
 	}
 
-	public Long readAtt(AEntity entity, EntityManager entityManager, String hQl) throws Exception {
+	public Long readAtt(AEntity entity, EntityManager entityManager, String hQl)
+			throws Exception {
 		Long result = 0L;
 
 		initializeEntityManager();
@@ -275,7 +280,24 @@ public class GenericDAO {
 
 	}
 
-	public List<AEntity> readAll(AEntity entity, EntityManager entityManager, Boolean ativos) throws Exception {
+	public List<String> readCampoTexto(AEntity entity,
+			EntityManager entityManager, String campoTexto) throws Exception {
+		List<String> result = new ArrayList<String>();
+
+		String hql = "select " + campoTexto + " from "
+				+ entity.getClass().getSimpleName() + " t";
+
+		initializeEntityManager();
+
+		Query query = entityManager.createQuery(hql);
+
+		result = query.getResultList();
+
+		return result;
+	}
+
+	public List<AEntity> readAll(AEntity entity, EntityManager entityManager,
+			Boolean ativos) throws Exception {
 
 		List<AEntity> result = new ArrayList<AEntity>();
 
@@ -325,9 +347,11 @@ public class GenericDAO {
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters, Integer initialRecord, Integer amountRecord,
-			List<NameValuePair> orderBy, Boolean registrosAtivos) throws Exception {
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters,
+			Integer initialRecord, Integer amountRecord,
+			List<NameValuePair> orderBy, Boolean registrosAtivos)
+			throws Exception {
 
 		initializeEntityManager();
 

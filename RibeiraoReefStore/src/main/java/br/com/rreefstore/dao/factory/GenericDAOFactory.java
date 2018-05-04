@@ -19,20 +19,23 @@ import br.com.rreefstore.utils.NameValuePair;
  */
 public class GenericDAOFactory {
 
-	public void create(AEntity entity, EntityManager entityManager) throws ConstraintViolationException, Exception {
+	public void create(AEntity entity, EntityManager entityManager)
+			throws ConstraintViolationException, Exception {
 
 		GenericDAO result = new GenericDAO(entity, entityManager);
 		result.create();
 	}
 
-	public void readAll(AEntity entity, EntityManager entityManager, Boolean ativos) throws Exception {
+	public void readAll(AEntity entity, EntityManager entityManager,
+			Boolean ativos) throws Exception {
 
 		GenericDAO result = new GenericDAO(entity, entityManager);
 		result.readAll(entity, entityManager, ativos);
 
 	}
 
-	public AEntity readPorId(AEntity entity, EntityManager entityManager, Long id) throws Exception {
+	public AEntity readPorId(AEntity entity, EntityManager entityManager,
+			Long id) throws Exception {
 
 		List<AEntity> list = new ArrayList<AEntity>();
 
@@ -53,29 +56,33 @@ public class GenericDAOFactory {
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters, Integer initialRecord, Integer amountRecord, String orderColumn,
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters,
+			Integer initialRecord, Integer amountRecord, String orderColumn,
 			String orderDirection) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
-		list = read(entity, entityManager, where, whereParameters, initialRecord, amountRecord, orderColumn,
-				orderDirection, true);
+		list = read(entity, entityManager, where, whereParameters,
+				initialRecord, amountRecord, orderColumn, orderDirection, true);
 		return list;
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters, Integer initialRecord, Integer amountRecord,
-			List<NameValuePair> orderBy, Boolean registrosAtivos) throws Exception {
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters,
+			Integer initialRecord, Integer amountRecord,
+			List<NameValuePair> orderBy, Boolean registrosAtivos)
+			throws Exception {
 
 		GenericDAO dao = new GenericDAO(entity, entityManager);
-		List<AEntity> list = dao.read(entity, entityManager, where, whereParameters, initialRecord, amountRecord,
-				orderBy, true);
+		List<AEntity> list = dao.read(entity, entityManager, where,
+				whereParameters, initialRecord, amountRecord, orderBy, true);
 
 		return list;
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters, Integer initialRecord, Integer amountRecord, String orderColumn,
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters,
+			Integer initialRecord, Integer amountRecord, String orderColumn,
 			String orderDirection, Boolean registrosAtivos) throws Exception {
 
 		List<AEntity> list = new ArrayList<AEntity>();
@@ -90,13 +97,15 @@ public class GenericDAOFactory {
 			orderBy.add(new NameValuePair(orderColumn, orderDirection));
 		}
 
-		list = read(entity, entityManager, where, whereParameters, initialRecord, amountRecord, orderBy, true);
+		list = read(entity, entityManager, where, whereParameters,
+				initialRecord, amountRecord, orderBy, true);
 
 		return list;
 
 	}
 
-	public List<AEntity> readAllActives(AEntity entity, EntityManager entityManager) throws Exception {
+	public List<AEntity> readAllActives(AEntity entity,
+			EntityManager entityManager) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 
 		list = read(entity, entityManager, 0, 0, null, null);
@@ -105,7 +114,8 @@ public class GenericDAOFactory {
 
 	}
 
-	public List<AEntity> readAll(AEntity entity, EntityManager entityManager) throws Exception {
+	public List<AEntity> readAll(AEntity entity, EntityManager entityManager)
+			throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 		List<NameValuePair> whereParameters = new ArrayList<NameValuePair>();
 		whereParameters.clear();
@@ -113,17 +123,30 @@ public class GenericDAOFactory {
 		return list;
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, Integer initialRecord, Integer amountRecord,
-			String orderColumn, String orderDirection) throws Exception {
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			Integer initialRecord, Integer amountRecord, String orderColumn,
+			String orderDirection) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 
-		list = read(entity, entityManager, null, null, initialRecord, amountRecord, orderColumn, orderDirection);
+		list = read(entity, entityManager, null, null, initialRecord,
+				amountRecord, orderColumn, orderDirection);
 
 		return list;
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where) throws Exception {
+	public List<String> readCampoTexto(AEntity entity,
+			EntityManager entityManager, String where) {
+		List<String> list = new ArrayList<String>();
+
+		list = readCampoTexto(entity, entityManager, where);
+
+		return list;
+
+	}
+
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 
 		list = read(entity, entityManager, where, null, 0, 0, null, null, null);
@@ -132,44 +155,51 @@ public class GenericDAOFactory {
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters) throws Exception {
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 
-		list = read(entity, entityManager, where, whereParameters, 0, 0, null, null, null);
+		list = read(entity, entityManager, where, whereParameters, 0, 0, null,
+				null, null);
 
 		return list;
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters, List<NameValuePair> orderBy) throws Exception {
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters,
+			List<NameValuePair> orderBy) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 
-		list = read(entity, entityManager, where, whereParameters, 0, 0, orderBy, true);
+		list = read(entity, entityManager, where, whereParameters, 0, 0,
+				orderBy, true);
 
 		return list;
 
 	}
 
-	public List<AEntity> read(AEntity entity, EntityManager entityManager, String where,
-			List<NameValuePair> whereParameters, Boolean registrosAtivos) throws Exception {
+	public List<AEntity> read(AEntity entity, EntityManager entityManager,
+			String where, List<NameValuePair> whereParameters,
+			Boolean registrosAtivos) throws Exception {
 		List<AEntity> list = new ArrayList<AEntity>();
 
-		list = read(entity, entityManager, where, whereParameters, 0, 0, null, null, registrosAtivos);
+		list = read(entity, entityManager, where, whereParameters, 0, 0, null,
+				null, registrosAtivos);
 
 		return list;
 
 	}
 
-	public void update(AEntity entity, EntityManager entityManager) throws ConstraintViolationException, Exception {
+	public void update(AEntity entity, EntityManager entityManager)
+			throws ConstraintViolationException, Exception {
 
 		GenericDAO result = new GenericDAO(entity, entityManager);
 		result.update();
 
 	}
 
-	public void delete(AEntity entity, EntityManager entityManager) throws ConstraintViolationException, Exception {
+	public void delete(AEntity entity, EntityManager entityManager)
+			throws ConstraintViolationException, Exception {
 
 		GenericDAO result = new GenericDAO(entity, entityManager);
 		result.delete();

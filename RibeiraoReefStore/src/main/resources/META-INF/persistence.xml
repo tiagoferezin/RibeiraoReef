@@ -11,6 +11,7 @@
 	<persistence-unit name="postgreSQL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
+
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 
@@ -20,13 +21,6 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/rreefstore" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
 			<property name="javax.persistence.jdbc.password" value="dsv" />
-
-
-			<!-- PRODUÇÃO -->
-			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://urlServer:5432/tfBestJob" 
-				/> <property name="javax.persistence.jdbc.user" value="adminbj" /> <property 
-				name="javax.persistence.jdbc.password" value="senha" /> -->
-
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 
