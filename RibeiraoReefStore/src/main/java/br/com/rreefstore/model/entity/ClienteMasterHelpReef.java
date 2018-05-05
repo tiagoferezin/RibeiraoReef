@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +21,7 @@ import br.com.rreefstore.model.entity.AEntity;
  *
  */
 @Entity
+@Table(name="clientemasterhelpreef")
 public class ClienteMasterHelpReef extends AEntity<ClienteMasterHelpReef> {
 
 	/**

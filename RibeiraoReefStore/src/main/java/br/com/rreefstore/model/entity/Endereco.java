@@ -12,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,6 +24,7 @@ import br.com.rreefstore.model.enumerador.ETipoEndereco;
  *
  */
 @Entity
+@Table(name="endereco")
 public class Endereco extends AEntity<Endereco> {
 	private static final long serialVersionUID = 1L;
 

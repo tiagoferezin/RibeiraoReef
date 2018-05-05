@@ -20,7 +20,7 @@ import br.com.rreefstore.model.entity.AEntity;
  *
  */
 @Entity
-@Table(uniqueConstraints = {
+@Table(name="usuario", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "username", name = "uk_username"),
 		@UniqueConstraint(columnNames = "email", name = "uk_email") })
 public class Usuario extends AEntity<Usuario> {
