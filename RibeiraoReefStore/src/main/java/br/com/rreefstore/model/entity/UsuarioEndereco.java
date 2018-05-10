@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@Table(name="usuario_endereco")
+@Table(name="usuarioendereco")
 public class UsuarioEndereco extends AEntity<UsuarioEndereco> {
 
 	/**

@@ -10,6 +10,7 @@
 	<!-- LOCAL (DEFAULT) -->
 	<persistence-unit name="postgreSQL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<mapping-file>META-INF/orm.xml</mapping-file>
 
 
 		<properties>
@@ -27,6 +28,9 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
+			<property name="logging.org.hibernate.tool.hbm2ddl" value="DEBUG"/>
+			<property name="log4j.category.org.hibernate.SQL" value="DEBUG"/>
 
 			<property name="hibernate.c3p0.min_size" value="5" />
 			<property name="hibernate.c3p0.max_size" value="10" />
