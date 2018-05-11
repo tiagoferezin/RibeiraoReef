@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="2989" started-at="2018-05-10T21:54:23Z" finished-at="2018-05-10T21:54:26Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="2989" started-at="2018-05-10T21:54:23Z" finished-at="2018-05-10T21:54:26Z">
+      <class name="br.com.ribeiraoreefshop.test.model.entity.PedidoTestNG">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.PedidoTestNG@3e6fa38a]" name="beforeTest" is-config="true" duration-ms="2869" started-at="2018-05-10T18:54:23Z" finished-at="2018-05-10T18:54:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="criacao()[pri:10, instance:br.com.ribeiraoreefshop.test.model.entity.PedidoTestNG@3e6fa38a]" name="criacao" duration-ms="85" started-at="2018-05-10T18:54:26Z" finished-at="2018-05-10T18:54:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- criacao -->
+        <test-method status="PASS" signature="testeGeracaoCodigo()[pri:15, instance:br.com.ribeiraoreefshop.test.model.entity.PedidoTestNG@3e6fa38a]" name="testeGeracaoCodigo" duration-ms="8" started-at="2018-05-10T18:54:26Z" finished-at="2018-05-10T18:54:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testeGeracaoCodigo -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.PedidoTestNG@3e6fa38a]" name="afterTest" is-config="true" duration-ms="5" started-at="2018-05-10T18:54:26Z" finished-at="2018-05-10T18:54:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+      </class> <!-- br.com.ribeiraoreefshop.test.model.entity.PedidoTestNG -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

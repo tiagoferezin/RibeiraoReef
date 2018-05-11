@@ -138,7 +138,7 @@
 
 	<build>
 
-		<finalName>rreefstore</finalName>
+		<finalName>ribeiraoreefshop</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
