@@ -106,11 +106,13 @@
 			<version>4.0.0.Final</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
-			<groupId>postgresql</groupId>
+			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.1-901-1.jdbc4</version>
+			<version>9.4.1211.jre7</version>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 		<dependency>
@@ -213,25 +215,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.flywaydb</groupId>
-				<artifactId>flyway-maven-plugin</artifactId>
-				<version>5.0.7</version>
-				<configuration>
-					<url>jdbc:postgresql://localhost:5432/teste</url>
-					<user>postgres</user>
-					<password>dsv</password>
-				</configuration>
-
-				<dependencies>
-					<dependency>
-						<groupId>postgresql</groupId>
-						<artifactId>postgresql</artifactId>
-						<version>9.1-901-1.jdbc4</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 
 		</plugins>

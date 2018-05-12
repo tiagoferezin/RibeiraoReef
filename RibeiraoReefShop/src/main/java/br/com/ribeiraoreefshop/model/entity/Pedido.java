@@ -7,17 +7,25 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import br.com.ribeiraoreefshop.model.enumerador.EStatus;
 
 /**
  * @author Tiago Ferezin
  *
  */
 @Entity
-@Table(name="pedido")
+@Table(name = "pedido")
 public class Pedido extends AEntity<Pedido> {
 
 	/**
@@ -31,10 +39,19 @@ public class Pedido extends AEntity<Pedido> {
 
 	@Column(nullable = false)
 	private Integer quantidade;
+	
+	@Enumerated(EnumType.STRING)
+	private EStatus status;
+	
+	@OneToOne
+	@JoinColumn(name = "idEndereco", nullable = false)
+	private Endereco endereco;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 
 	public Pedido() {
@@ -49,7 +66,8 @@ public class Pedido extends AEntity<Pedido> {
 	}
 
 	/**
-	 * @param idPedido the idPedido to set
+	 * @param idPedido
+	 *            the idPedido to set
 	 */
 	public void setIdPedido(Long idPedido) {
 		this.idPedido = idPedido;
@@ -63,7 +81,8 @@ public class Pedido extends AEntity<Pedido> {
 	}
 
 	/**
-	 * @param quantidade the quantidade to set
+	 * @param quantidade
+	 *            the quantidade to set
 	 */
 	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
@@ -77,7 +96,8 @@ public class Pedido extends AEntity<Pedido> {
 	}
 
 	/**
-	 * @param dataCriacao the dataCriacao to set
+	 * @param dataCriacao
+	 *            the dataCriacao to set
 	 */
 	public void setDataCriacao(Calendar dataCriacao) {
 		this.dataCriacao = dataCriacao;

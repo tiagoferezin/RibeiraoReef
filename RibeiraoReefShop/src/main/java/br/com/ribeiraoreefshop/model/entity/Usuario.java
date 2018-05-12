@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 import br.com.ribeiraoreefshop.model.entity.AEntity;
@@ -20,7 +22,7 @@ import br.com.ribeiraoreefshop.model.entity.AEntity;
  *
  */
 @Entity
-@Table(name="usuario", uniqueConstraints = {
+@Table(name = "usuario", uniqueConstraints = {
 		@UniqueConstraint(columnNames = "username", name = "uk_username"),
 		@UniqueConstraint(columnNames = "email", name = "uk_email") })
 public class Usuario extends AEntity<Usuario> {
@@ -66,8 +68,10 @@ public class Usuario extends AEntity<Usuario> {
 	private Double carteira;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 
 	public Usuario() {

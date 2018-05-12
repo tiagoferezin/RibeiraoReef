@@ -47,6 +47,7 @@ public class ClienteMasterHelpReef extends AEntity<ClienteMasterHelpReef> {
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 

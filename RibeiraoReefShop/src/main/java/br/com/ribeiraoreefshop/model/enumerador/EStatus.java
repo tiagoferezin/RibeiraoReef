@@ -15,6 +15,8 @@ public enum EStatus {
 	FINALIZADO,
 	ANALISE,
 	SEPARACAO,
+	PUBLICO,
+	PRIVADO,
 	SEPARADO;
 
 }
