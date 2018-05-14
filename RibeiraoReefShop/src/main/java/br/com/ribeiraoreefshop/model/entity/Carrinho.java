@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -27,7 +29,21 @@ public class Carrinho extends AEntity<Carrinho> {
 	@Column(nullable = false)
 	private Double total;
 
-	private Double valorFreteCarrinho;
+	@OneToOne
+	@JoinColumn(name = "idFrete")
+	private Frete frete;
+
+	@Column(nullable = false)
+	private Double larguraTotal;
+
+	@Column(nullable = false)
+	private Double alturaTotal;
+
+	@Column(nullable = false)
+	private Double comprimentoTotal;
+
+	@Column(nullable = false)
+	private Double diametroTotal;
 
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
@@ -38,6 +54,81 @@ public class Carrinho extends AEntity<Carrinho> {
 
 	public Carrinho() {
 
+	}
+
+	/**
+	 * @return the frete
+	 */
+	public Frete getFrete() {
+		return frete;
+	}
+
+	/**
+	 * @param frete
+	 *            the frete to set
+	 */
+	public void setFrete(Frete frete) {
+		this.frete = frete;
+	}
+
+	/**
+	 * @return the larguraTotal
+	 */
+	public Double getLarguraTotal() {
+		return larguraTotal;
+	}
+
+	/**
+	 * @param larguraTotal
+	 *            the larguraTotal to set
+	 */
+	public void setLarguraTotal(Double larguraTotal) {
+		this.larguraTotal = larguraTotal;
+	}
+
+	/**
+	 * @return the alturaTotal
+	 */
+	public Double getAlturaTotal() {
+		return alturaTotal;
+	}
+
+	/**
+	 * @param alturaTotal
+	 *            the alturaTotal to set
+	 */
+	public void setAlturaTotal(Double alturaTotal) {
+		this.alturaTotal = alturaTotal;
+	}
+
+	/**
+	 * @return the comprimentoTotal
+	 */
+	public Double getComprimentoTotal() {
+		return comprimentoTotal;
+	}
+
+	/**
+	 * @param comprimentoTotal
+	 *            the comprimentoTotal to set
+	 */
+	public void setComprimentoTotal(Double comprimentoTotal) {
+		this.comprimentoTotal = comprimentoTotal;
+	}
+
+	/**
+	 * @return the diametroTotal
+	 */
+	public Double getDiametroTotal() {
+		return diametroTotal;
+	}
+
+	/**
+	 * @param diametroTotal
+	 *            the diametroTotal to set
+	 */
+	public void setDiametroTotal(Double diametroTotal) {
+		this.diametroTotal = diametroTotal;
 	}
 
 	/**
@@ -68,21 +159,6 @@ public class Carrinho extends AEntity<Carrinho> {
 	 */
 	public void setTotal(Double total) {
 		this.total = total;
-	}
-
-	/**
-	 * @return the valorFreteCarrinho
-	 */
-	public Double getValorFreteCarrinho() {
-		return valorFreteCarrinho;
-	}
-
-	/**
-	 * @param valorFreteCarrinho
-	 *            the valorFreteCarrinho to set
-	 */
-	public void setValorFreteCarrinho(Double valorFreteCarrinho) {
-		this.valorFreteCarrinho = valorFreteCarrinho;
 	}
 
 	/**

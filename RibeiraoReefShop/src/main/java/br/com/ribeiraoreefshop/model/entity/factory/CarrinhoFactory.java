@@ -15,7 +15,7 @@ import br.com.ribeiraoreefshop.model.entity.ProdutoCarrinho;
  */
 public class CarrinhoFactory {
 
-	public Double valorTotal(Carrinho carrinho,
+	public Double valorTotalSemFrete(Carrinho carrinho,
 			List<ProdutoCarrinho> listaProdutoCarrinho) {
 
 		Double result = 0D;
@@ -33,16 +33,10 @@ public class CarrinhoFactory {
 			resultado = resultado + total;
 		}
 
-		Double frete = carrinho.getValorFreteCarrinho();
-		result = resultado + frete;
+		result = resultado;
 
 		return result;
 
-	}
-
-	public Double calcularFrete(String cep) {
-		Double result = 0D;
-		return result;
 	}
 
 }

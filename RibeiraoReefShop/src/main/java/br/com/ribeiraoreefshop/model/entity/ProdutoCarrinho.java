@@ -27,7 +27,7 @@ public class ProdutoCarrinho extends AEntity<ProdutoCarrinho> {
 	private Long idProdutoCarrinho;
 
 	@OneToOne
-	@JoinColumn(name = "idProduto", nullable = false)
+	@JoinColumn(name = "idCarrinho", nullable = false)
 	private Carrinho carrinho;
 
 	@OneToOne
