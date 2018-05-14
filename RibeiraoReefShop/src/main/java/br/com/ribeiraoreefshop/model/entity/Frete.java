@@ -29,7 +29,7 @@ public class Frete extends AEntity<Frete> {
 	private Long idFrete;
 
 	@Column(nullable = false)
-	private String valorFrete;
+	private Double valorFrete;
 
 	@Column(nullable = false)
 	private String cep;
@@ -114,7 +114,7 @@ public class Frete extends AEntity<Frete> {
 	/**
 	 * @return the valorFrete
 	 */
-	public String getValorFrete() {
+	public Double getValorFrete() {
 		return valorFrete;
 	}
 
@@ -122,7 +122,7 @@ public class Frete extends AEntity<Frete> {
 	 * @param valorFrete
 	 *            the valorFrete to set
 	 */
-	public void setValorFrete(String valorFrete) {
+	public void setValorFrete(Double valorFrete) {
 		this.valorFrete = valorFrete;
 	}
 

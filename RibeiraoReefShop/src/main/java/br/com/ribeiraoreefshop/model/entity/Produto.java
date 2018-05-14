@@ -40,6 +40,21 @@ public class Produto extends AEntity<Produto> {
 
 	@Column(nullable = false)
 	private Double valor;
+	
+	@Column(nullable = false)
+	private Double peso;
+	
+	@Column(nullable = false)
+	private Double largura;
+
+	@Column(nullable = false)
+	private Double altura;
+
+	@Column(nullable = false)
+	private Double comprimento;
+
+	@Column(nullable = false)
+	private Double diametro;
 
 	@Column(nullable = false)
 	private Integer estoque;
@@ -67,6 +82,76 @@ public class Produto extends AEntity<Produto> {
 		this.valor = 0D;
 		this.venderInidividual = 0;
 
+	}
+
+	/**
+	 * @return the peso
+	 */
+	public Double getPeso() {
+		return peso;
+	}
+
+	/**
+	 * @param peso the peso to set
+	 */
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
+	/**
+	 * @return the largura
+	 */
+	public Double getLargura() {
+		return largura;
+	}
+
+	/**
+	 * @param largura the largura to set
+	 */
+	public void setLargura(Double largura) {
+		this.largura = largura;
+	}
+
+	/**
+	 * @return the altura
+	 */
+	public Double getAltura() {
+		return altura;
+	}
+
+	/**
+	 * @param altura the altura to set
+	 */
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+
+	/**
+	 * @return the comprimento
+	 */
+	public Double getComprimento() {
+		return comprimento;
+	}
+
+	/**
+	 * @param comprimento the comprimento to set
+	 */
+	public void setComprimento(Double comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	/**
+	 * @return the diametro
+	 */
+	public Double getDiametro() {
+		return diametro;
+	}
+
+	/**
+	 * @param diametro the diametro to set
+	 */
+	public void setDiametro(Double diametro) {
+		this.diametro = diametro;
 	}
 
 	/**
