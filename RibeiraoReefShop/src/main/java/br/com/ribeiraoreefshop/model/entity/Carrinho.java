@@ -30,6 +30,10 @@ public class Carrinho extends AEntity<Carrinho> {
 	private Double total;
 
 	@OneToOne
+	@JoinColumn(name = "idUsuario")
+	private Usuario usuario;
+
+	@OneToOne
 	@JoinColumn(name = "idFrete")
 	private Frete frete;
 
@@ -54,6 +58,21 @@ public class Carrinho extends AEntity<Carrinho> {
 
 	public Carrinho() {
 
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario
+	 *            the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	/**

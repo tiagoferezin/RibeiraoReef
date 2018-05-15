@@ -3,10 +3,8 @@
  */
 package br.com.ribeiraoreefshop.model.entity.factory;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ribeiraoreefshop.model.entity.Carrinho;
 import br.com.ribeiraoreefshop.model.entity.Frete;
 import br.com.ribeiraoreefshop.model.entity.ProdutoCarrinho;
 
@@ -93,12 +91,33 @@ public class CarrinhoFactory {
 			largura = 12D;
 		}
 
-		if(largura>104D){
+		if (largura > 104D) {
 			result = 0D;
 		}
-		
+
 		return result;
 
+	}
+
+	public Double calcularComprimento(List<ProdutoCarrinho> listaProdutoCarrinho) {
+
+		Double result = 0D;
+
+		Double comprimento = 0D;
+		for (ProdutoCarrinho produtoCarrinho : listaProdutoCarrinho) {
+			Double comprimentoDoProduto = produtoCarrinho.getProduto()
+					.getComprimento();
+			comprimento = comprimento + comprimentoDoProduto;
+		}
+
+		if (comprimento < 16D) {
+			comprimento = 17D;
+		}
+		if (comprimento > 104D) {
+			comprimento = 0D;
+		}
+
+		return result;
 	}
 
 }

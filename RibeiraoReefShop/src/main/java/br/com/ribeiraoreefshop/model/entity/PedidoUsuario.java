@@ -20,11 +20,11 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-public class UsuarioPedido extends AEntity<UsuarioPedido> {
+public class PedidoUsuario extends AEntity<PedidoUsuario> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idUsuarioPedido;
+	private Long idPedidoUsuario;
 
 	@OneToOne
 	@JoinColumn(name = "idUsuario", nullable = false)
@@ -41,23 +41,23 @@ public class UsuarioPedido extends AEntity<UsuarioPedido> {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 
-	public UsuarioPedido() {
+	public PedidoUsuario() {
 
 	}
 
 	/**
-	 * @return the idUsuarioPedido
+	 * @return the idPedidoUsuario
 	 */
-	public Long getIdUsuarioPedido() {
-		return idUsuarioPedido;
+	public Long getIdPedidoUsuario() {
+		return idPedidoUsuario;
 	}
 
 	/**
-	 * @param idUsuarioPedido
-	 *            the idUsuarioPedido to set
+	 * @param idPedidoUsuario
+	 *            the idPedidoUsuario to set
 	 */
-	public void setIdUsuarioPedido(Long idUsuarioPedido) {
-		this.idUsuarioPedido = idUsuarioPedido;
+	public void setIdPedidoUsuario(Long idPedidoUsuario) {
+		this.idPedidoUsuario = idPedidoUsuario;
 	}
 
 	/**
@@ -123,13 +123,13 @@ public class UsuarioPedido extends AEntity<UsuarioPedido> {
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return idUsuarioPedido;
+		return idPedidoUsuario;
 	}
 
 	@Override
 	public void setId(Long id) {
 		// TODO Auto-generated method stub
-		this.idUsuarioPedido = id;
+		this.idPedidoUsuario = id;
 	}
 
 	@Override
