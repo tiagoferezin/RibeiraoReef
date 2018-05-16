@@ -38,6 +38,7 @@ public class GenericDAO {
 	public GenericDAO(AEntity entity, EntityManager entityManager) {
 
 		genericDAOFactory = new GenericDAOFactory();
+		
 
 		setEntity(entity);
 		setEntityManager(entityManager);
@@ -57,6 +58,7 @@ public class GenericDAO {
 				closeTransaction = true;
 			}
 
+			this.entity.setDataCriacao(Calendar.getInstance());
 			entityManager.persist(this.entity);
 
 			if (entityManager.getTransaction().isActive()) {

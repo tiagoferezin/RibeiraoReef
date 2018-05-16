@@ -4,6 +4,7 @@
 package br.com.ribeiraoreefshop.utils;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -76,14 +77,33 @@ public class Normalizacao {
 
 		return retorno;
 	}
-	
-	public static String normalizarData(Calendar data){
-		String retorno =  "";
-		
+
+	public static String normalizarData(Calendar data) {
+		String retorno = "";
+
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		retorno = df.format(data.getTime());
-		
+
 		return retorno;
+	}
+
+	public static String formatandoCasasDecimais(Double numero) {
+		String result = "";
+
+		result = String.format("%.2f", numero);
+		// resultado = resultado.replaceAll( "," , "." );
+
+		return result;
+	}
+
+	public static Double converterStringValorToDouble(String valor) {
+		Double result = 0D;
+
+		valor = valor.replaceAll(",", ".");
+
+		result = Double.parseDouble(valor);
+
+		return result;
 	}
 
 }

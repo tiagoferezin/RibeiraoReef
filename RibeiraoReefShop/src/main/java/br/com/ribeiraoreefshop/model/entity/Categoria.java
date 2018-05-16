@@ -30,8 +30,7 @@ public class Categoria extends AEntity<Categoria> {
 	private String nomeCategoria;
 
 	@OneToOne
-	@JoinColumn(name = "idCategoria")
-	@Column(name = "idCategoriaAncestral")
+	@JoinColumn(name = "idCategoriaAncestral")
 	private Categoria categoriaAncestral;
 
 	private String descricao;

@@ -11,7 +11,7 @@ import java.util.Calendar;
  *
  */
 public interface IEntity extends Serializable {
-	
+
 	public Long getId();
 
 	public void setId(Long id);
@@ -19,6 +19,10 @@ public interface IEntity extends Serializable {
 	public boolean isEmptyId();
 
 	public boolean isDeleted();
+
+	public Calendar getDataCriacao();
+
+	public void setDataCriacao(Calendar dataCriacao);
 
 	public Calendar getDataDesativacao();
 
