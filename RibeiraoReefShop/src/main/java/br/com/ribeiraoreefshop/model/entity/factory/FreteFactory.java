@@ -4,6 +4,10 @@
 package br.com.ribeiraoreefshop.model.entity.factory;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
 
 import org.tempuri.CResultado;
 import org.tempuri.CServico;
@@ -12,9 +16,11 @@ import org.tempuri.CalcPrecoPrazoWSSoap;
 
 import br.com.ribeiraoreefshop.model.entity.Carrinho;
 import br.com.ribeiraoreefshop.model.entity.Frete;
+import br.com.ribeiraoreefshop.model.entity.ProdutoCarrinho;
 import br.com.ribeiraoreefshop.model.enumerador.EAvisoRecebimento;
 import br.com.ribeiraoreefshop.model.enumerador.EMaoPropria;
 import br.com.ribeiraoreefshop.model.enumerador.ETipoFrete;
+import br.com.ribeiraoreefshop.utils.Normalizacao;
 
 /**
  * @author Tiago Ferezin
@@ -25,6 +31,21 @@ public class FreteFactory {
 	private static String codSedex = "04014";
 	private static String codPAC = "04510";
 	private static String contratoCorreios = "";
+
+	public Double getPesoDoFrete(Carrinho carrinho, EntityManager entityManager) {
+
+		Double result = 0D;
+
+		ProdutoCarrinhoFactory pcf = new ProdutoCarrinhoFactory();
+		CarrinhoFactory cf = new CarrinhoFactory();
+		List<ProdutoCarrinho> listaProdutoCarrinho = new ArrayList<ProdutoCarrinho>();
+		listaProdutoCarrinho = pcf.getProdutosDoCarrinho(carrinho,
+				entityManager);
+
+		result = cf.calcularPesoTotal(listaProdutoCarrinho);
+		return result;
+
+	}
 
 	public Double getValorDoFreteSemSeguro(Frete frete, String cepOrigem,
 			String cepDestino, Carrinho carrinho, EMaoPropria maopropia,
@@ -157,11 +178,18 @@ public class FreteFactory {
 		String result = "";
 		cep = cep.trim();
 
-		if (cep.contains("-")) {
-			result = cep.replaceAll("-", "");
-		} else {
-			result = cep;
-		}
+		cep = Normalizacao.getTextoPesquisa(cep);
+
+		//if (cep.contains("-")) {
+			//result = cep.replaceAll("-", "");
+		//} else {
+			//result = cep;
+		//}
+
+		
+			String resultado = cep.replaceAll("[^0-9]", "");
+			result = resultado;
+		
 		result = result.trim();
 		return result;
 

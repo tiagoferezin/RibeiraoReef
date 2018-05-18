@@ -9,6 +9,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
+import br.com.ribeiraoreefshop.dao.factory.GenericDAOFactory;
+import br.com.ribeiraoreefshop.model.entity.AEntity;
 import br.com.ribeiraoreefshop.model.entity.Usuario;
 import br.com.ribeiraoreefshop.utils.Normalizacao;
 
@@ -17,6 +21,37 @@ import br.com.ribeiraoreefshop.utils.Normalizacao;
  *
  */
 public class UsuarioFactory {
+	GenericDAOFactory daoFactory = new GenericDAOFactory();
+
+	public Usuario getUsuario(Long idUsuario, EntityManager entityManager)
+			throws Exception {
+
+		Usuario result = new Usuario();
+		Usuario usuario = new Usuario();
+
+		result = (Usuario) daoFactory.readPorId(usuario, entityManager,
+				idUsuario);
+
+		return result;
+	}
+
+	public List<Usuario> listarUsuariosAtivos(EntityManager entityManager)
+			throws Exception {
+
+		List<Usuario> result = new ArrayList<Usuario>();
+		Usuario usuario = new Usuario();
+		List<AEntity> lista = new ArrayList<AEntity>();
+
+		lista = daoFactory.readAllActives(usuario, entityManager);
+
+		for (AEntity ae : lista) {
+			usuario = (Usuario) ae;
+			result.add(usuario);
+		}
+
+		return result;
+
+	}
 
 	public String senhaCriptografada(String salt, String senha)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException {

@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="52053" started-at="2018-05-16T19:59:45Z" finished-at="2018-05-16T20:00:37Z">
+  <suite name="Default suite" duration-ms="90353" started-at="2018-05-18T19:17:05Z" finished-at="2018-05-18T19:18:35Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="52053" started-at="2018-05-16T19:59:45Z" finished-at="2018-05-16T20:00:37Z">
-      <class name="br.com.ribeiraoreefshop.test.model.entity.ProdutoTestNG">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.ProdutoTestNG@188715b5]" name="beforeTest" is-config="true" duration-ms="2823" started-at="2018-05-16T16:59:45Z" finished-at="2018-05-16T16:59:47Z">
+    <test name="Default test" duration-ms="90353" started-at="2018-05-18T19:17:05Z" finished-at="2018-05-18T19:18:35Z">
+      <class name="br.com.ribeiraoreefshop.test.model.entity.ProdutoCarrinhoTestNG">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.ProdutoCarrinhoTestNG@6a192cfe]" name="beforeTest" is-config="true" duration-ms="3100" started-at="2018-05-18T16:17:05Z" finished-at="2018-05-18T16:17:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="criacao()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.ProdutoTestNG@188715b5]" name="criacao" duration-ms="49207" started-at="2018-05-16T16:59:47Z" finished-at="2018-05-16T17:00:37Z">
+        <test-method status="PASS" signature="criacao()[pri:10, instance:br.com.ribeiraoreefshop.test.model.entity.ProdutoCarrinhoTestNG@6a192cfe]" name="criacao" duration-ms="87230" started-at="2018-05-18T16:17:08Z" finished-at="2018-05-18T16:18:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- criacao -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.ProdutoTestNG@188715b5]" name="afterTest" is-config="true" duration-ms="7" started-at="2018-05-16T17:00:37Z" finished-at="2018-05-16T17:00:37Z">
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:br.com.ribeiraoreefshop.test.model.entity.ProdutoCarrinhoTestNG@6a192cfe]" name="afterTest" is-config="true" duration-ms="5" started-at="2018-05-18T16:18:35Z" finished-at="2018-05-18T16:18:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- br.com.ribeiraoreefshop.test.model.entity.ProdutoTestNG -->
+      </class> <!-- br.com.ribeiraoreefshop.test.model.entity.ProdutoCarrinhoTestNG -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

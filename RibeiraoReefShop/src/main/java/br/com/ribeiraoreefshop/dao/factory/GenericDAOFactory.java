@@ -34,6 +34,17 @@ public class GenericDAOFactory {
 
 	}
 
+	public Long countWhere(AEntity entity, EntityManager entityManager,
+			String where) {
+
+		Long result = 0L;
+
+		String hQl = "select count(*) from "
+				+ entity.getClass().getSimpleName() + " t" + " where " + where;
+
+		return result;
+	}
+
 	public AEntity readPorId(AEntity entity, EntityManager entityManager,
 			Long id) throws Exception {
 

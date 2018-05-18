@@ -27,15 +27,10 @@ public class Carrinho extends AEntity<Carrinho> {
 	private Long idCarrinho;
 
 	@Column(nullable = false)
+	private Double totalSemFrete;
+
+	@Column(nullable = false)
 	private Double total;
-
-	@OneToOne
-	@JoinColumn(name = "idUsuario")
-	private Usuario usuario;
-
-	@OneToOne
-	@JoinColumn(name = "idFrete")
-	private Frete frete;
 
 	@Column(nullable = false)
 	private Double larguraTotal;
@@ -58,36 +53,25 @@ public class Carrinho extends AEntity<Carrinho> {
 
 	public Carrinho() {
 
+		this.alturaTotal = 0D;
+		this.larguraTotal= 0D;
+		this.comprimentoTotal=0D;
+		this.diametroTotal=0D;
 	}
 
 	/**
-	 * @return the usuario
+	 * @return the totalSemFrete
 	 */
-	public Usuario getUsuario() {
-		return usuario;
+	public Double getTotalSemFrete() {
+		return totalSemFrete;
 	}
 
 	/**
-	 * @param usuario
-	 *            the usuario to set
+	 * @param totalSemFrete
+	 *            the totalSemFrete to set
 	 */
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
-	/**
-	 * @return the frete
-	 */
-	public Frete getFrete() {
-		return frete;
-	}
-
-	/**
-	 * @param frete
-	 *            the frete to set
-	 */
-	public void setFrete(Frete frete) {
-		this.frete = frete;
+	public void setTotalSemFrete(Double totalSemFrete) {
+		this.totalSemFrete = totalSemFrete;
 	}
 
 	/**
