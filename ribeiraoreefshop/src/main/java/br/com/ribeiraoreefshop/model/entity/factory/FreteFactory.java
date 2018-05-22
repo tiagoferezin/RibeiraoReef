@@ -98,6 +98,18 @@ public class FreteFactory {
 
 	}
 
+	public Integer quantidadeDeFretesNoPedido(Double pesoDaEncomenda) {
+		Integer result = 0;
+
+		double resultado = pesoDaEncomenda / 29;
+
+		resultado = Normalizacao.arredondar(resultado, 0, 0);
+
+		result = (int) resultado;
+
+		return result;
+	}
+
 	/**
 	 * @param frete
 	 * @param cepOrigem
@@ -135,7 +147,7 @@ public class FreteFactory {
 			nCdServico = codSedex;
 		}
 
-		String peso = String.valueOf(frete.getPeso());
+		String peso = "";
 
 		cepDestino = retornaFormatoCep(cepDestino);
 		cepOrigem = retornaFormatoCep(cepOrigem);
@@ -147,27 +159,111 @@ public class FreteFactory {
 				.getComprimentoTotal());
 		BigDecimal nVlAltura = BigDecimal.valueOf(carrinho.getAlturaTotal());
 		BigDecimal nVlLargura = BigDecimal.valueOf(carrinho.getLarguraTotal());
+		Double diametro = carrinho.getDiametroTotal();
 		BigDecimal nVlDiametro = BigDecimal.ZERO;
+		if (diametro > 0D) {
+			nVlDiametro = BigDecimal.valueOf(diametro);
+		}
+		CServico cs = new CServico();
 
 		try {
 
+			Double pesoFrete = frete.getPeso();
+
 			CalcPrecoPrazoWSSoap soap = new CalcPrecoPrazoWSLocator()
 					.getCalcPrecoPrazoWSSoap();
+			CResultado res = new CResultado();
+			CServico arrayServicos[] = new CServico[50];
+			if (pesoFrete <= 29) {
+				peso = String.valueOf(pesoFrete);
+				res = soap.calcPrecoPrazo(nCdEmpresa, sDsSenha, nCdServico,
+						cepOrigem, cepDestino, peso, nCdFormato,
+						nVlComprimento, nVlAltura, nVlLargura, nVlDiametro,
+						sCdMaoPropria, nVlValorDeclarado, sCdAvisoRecebimento);
 
-			CResultado res = soap.calcPrecoPrazo(nCdEmpresa, sDsSenha,
-					nCdServico, cepOrigem, cepDestino, peso, nCdFormato,
-					nVlComprimento, nVlAltura, nVlLargura, nVlDiametro,
-					sCdMaoPropria, nVlValorDeclarado, sCdAvisoRecebimento);
+				arrayServicos = res.getServicos();
 
-			CServico[] arrayServicos = res.getServicos();
+				cs = arrayServicos[0];
 
-			CServico cs = arrayServicos[0];
+				result = cs;
 
-			result = cs;
+			} else {
+				Double qtdDeFrete = pesoFrete / 29;
+
+				List<Double> listaPeso = new ArrayList<Double>();
+
+				Double novoPeso = 0D;
+				Double qtd = qtdDeFrete;
+
+				for (int i = 0; i < qtdDeFrete; i++) {
+
+					if (i < qtdDeFrete - 1) {
+						novoPeso = 29D;
+					} else {
+
+						novoPeso = 29 * qtd;
+
+					}
+					novoPeso = Normalizacao.arredondar(novoPeso, 2, 0);
+					listaPeso.add(novoPeso);
+					qtd = qtd - 1;
+				}
+
+				String valorSemAdicional = "";
+				String valorTotalComTudo = "";
+				Double vsa = 0D;
+				Double vca = 0D;
+
+				for (int i = 0; i < listaPeso.size(); i++) {
+					Double peso1 = 0D;
+					Double vsaInter = 0D;
+					Double vcaInter = 0D;
+					peso1 = listaPeso.get(i);
+
+					peso = String.valueOf(peso1);
+					res = soap.calcPrecoPrazo(nCdEmpresa, sDsSenha, nCdServico,
+							cepOrigem, cepDestino, peso, nCdFormato,
+							nVlComprimento, nVlAltura, nVlLargura, nVlDiametro,
+							sCdMaoPropria, nVlValorDeclarado,
+							sCdAvisoRecebimento);
+					String value = "";
+
+					arrayServicos = res.getServicos();
+					CServico cs2 = new CServico();
+					cs2 = arrayServicos[0];
+
+					valorSemAdicional = cs2.getValorSemAdicionais();
+					valorTotalComTudo = cs2.getValor();
+
+					vcaInter = Normalizacao
+							.converterStringValorToDouble(valorTotalComTudo);
+					vsaInter = Normalizacao
+							.converterStringValorToDouble(valorSemAdicional);
+
+					vsa = vsa + vsaInter;
+					vca = vca + vcaInter;
+
+				}
+				vsa = Normalizacao.arredondar(vsa, 2, 0);
+				vca = Normalizacao.arredondar(vca, 2, 0);
+				valorSemAdicional = String.valueOf(vsa);
+				valorTotalComTudo = String.valueOf(vca);
+
+				arrayServicos = res.getServicos();
+
+				cs = arrayServicos[0];
+
+				cs.setValor(valorTotalComTudo);
+				cs.setValorSemAdicionais(valorSemAdicional);
+
+				result = cs;
+
+			}
 
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.getMessage();
+			e.printStackTrace();
 		}
 
 		return result;
@@ -180,16 +276,15 @@ public class FreteFactory {
 
 		cep = Normalizacao.getTextoPesquisa(cep);
 
-		//if (cep.contains("-")) {
-			//result = cep.replaceAll("-", "");
-		//} else {
-			//result = cep;
-		//}
+		// if (cep.contains("-")) {
+		// result = cep.replaceAll("-", "");
+		// } else {
+		// result = cep;
+		// }
 
-		
-			String resultado = cep.replaceAll("[^0-9]", "");
-			result = resultado;
-		
+		String resultado = cep.replaceAll("[^0-9]", "");
+		result = resultado;
+
 		result = result.trim();
 		return result;
 

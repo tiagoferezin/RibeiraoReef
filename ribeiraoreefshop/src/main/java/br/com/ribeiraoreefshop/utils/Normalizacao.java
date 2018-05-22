@@ -105,5 +105,25 @@ public class Normalizacao {
 
 		return result;
 	}
+	
+	
+	/**
+	 *  1 - Valor a arredondar.
+	 *  2 - Quantidade de casas depois da vírgula.
+	 *  3 - Arredondar para cima ou para baixo?
+	 *          Para cima = 0 (ceil)
+	 *          Para baixo = 1 ou qualquer outro inteiro (floor)
+	 **/
+	public static Double arredondar(double valor, int casas, int cimaOuBaixo) {
+	    double arredondado = valor;
+	    arredondado *= (Math.pow(10, casas));
+	    if (cimaOuBaixo == 0) {
+	        arredondado = Math.ceil(arredondado);           
+	    } else {
+	        arredondado = Math.floor(arredondado);
+	    }
+	    arredondado /= (Math.pow(10, casas));
+	    return arredondado;
+	}
 
 }

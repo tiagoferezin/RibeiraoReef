@@ -13,11 +13,11 @@
 	</properties>
 
 	<dependencies>
-	
-	
-	<!-- Daqui -->
-	
-	<!-- https://mvnrepository.com/artifact/org.geonames/geonames -->
+
+
+		<!-- Daqui -->
+
+		<!-- https://mvnrepository.com/artifact/org.geonames/geonames -->
 		<dependency>
 			<groupId>org.geonames</groupId>
 			<artifactId>geonames</artifactId>
@@ -87,7 +87,7 @@
 
 		<!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
 
-	<!-- https://mvnrepository.com/artifact/javax.xml/jaxrpc -->
+		<!-- https://mvnrepository.com/artifact/javax.xml/jaxrpc -->
 		<dependency>
 			<groupId>javax.xml</groupId>
 			<artifactId>jaxrpc</artifactId>
@@ -100,11 +100,11 @@
 			<artifactId>axis</artifactId>
 			<version>1.4</version>
 		</dependency>
-	
-	<!-- até aqui -->
+
+		<!-- até aqui -->
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
-		
+
 
 		<!-- http://mvnrepository.com/artifact/javax.inject/javax.inject -->
 		<dependency>
@@ -113,7 +113,7 @@
 			<version>1</version>
 		</dependency>
 
-		
+
 
 
 		<!-- http://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core -->
@@ -127,7 +127,12 @@
 
 
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.weld</groupId>
