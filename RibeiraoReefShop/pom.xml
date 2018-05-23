@@ -13,17 +13,34 @@
 	</properties>
 
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/br.com.caelum/vraptor -->
 		<dependency>
 			<groupId>br.com.caelum</groupId>
 			<artifactId>vraptor</artifactId>
-			<version>4.2.0-RC3</version>
+			<version>4.1.0.Final</version>
+
+		</dependency>
+
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-hibernate</artifactId>
+			<version>4.0.0.Final</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
 			<artifactId>weld-servlet-core</artifactId>
 			<version>2.1.2.Final</version>
+
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.jboss.weld.environment/weld-environment-common -->
+		<dependency>
+			<groupId>org.jboss.weld.environment</groupId>
+			<artifactId>weld-environment-common</artifactId>
+			<version>3.0.4.Final</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>org.jboss.weld</groupId>
@@ -93,7 +110,7 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.3.0.Final</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -127,7 +144,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>br.com.ribeiraoreefshop</finalName>
+		<finalName>ribeiraoreefshop</finalName>
 		<outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>

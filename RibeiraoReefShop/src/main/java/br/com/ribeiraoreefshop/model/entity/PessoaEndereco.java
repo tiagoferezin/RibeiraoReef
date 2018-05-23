@@ -12,7 +12,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -21,21 +20,15 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@Table(name = "usuarioendereco")
-public class UsuarioEndereco extends AEntity<UsuarioEndereco> {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class PessoaEndereco extends AEntity<PessoaEndereco> {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idUsuarioEndereco;
+	private Long idPessoaEndereco;
 
 	@OneToOne
-	@JoinColumn(name = "idUsuario", nullable = false)
-	private Usuario usuario;
+	@JoinColumn(name = "idPessoa", nullable = false)
+	private Pessoa pessoa;
 
 	@OneToOne
 	@JoinColumn(name = "idEndereco", nullable = false)
@@ -48,38 +41,38 @@ public class UsuarioEndereco extends AEntity<UsuarioEndereco> {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataDesativacao;
 
-	public UsuarioEndereco() {
+	public PessoaEndereco() {
 
 	}
 
 	/**
-	 * @return the idUsuarioEndereco
+	 * @return the idPessoaEndereco
 	 */
-	public Long getIdUsuarioEndereco() {
-		return idUsuarioEndereco;
+	public Long getIdPessoaEndereco() {
+		return idPessoaEndereco;
 	}
 
 	/**
-	 * @param idUsuarioEndereco
-	 *            the idUsuarioEndereco to set
+	 * @param idPessoaEndereco
+	 *            the idPessoaEndereco to set
 	 */
-	public void setIdUsuarioEndereco(Long idUsuarioEndereco) {
-		this.idUsuarioEndereco = idUsuarioEndereco;
+	public void setIdPessoaEndereco(Long idPessoaEndereco) {
+		this.idPessoaEndereco = idPessoaEndereco;
 	}
 
 	/**
-	 * @return the usuario
+	 * @return the pessoa
 	 */
-	public Usuario getUsuario() {
-		return usuario;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
 	/**
-	 * @param usuario
-	 *            the usuario to set
+	 * @param pessoa
+	 *            the pessoa to set
 	 */
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	/**
@@ -97,16 +90,46 @@ public class UsuarioEndereco extends AEntity<UsuarioEndereco> {
 		this.endereco = endereco;
 	}
 
+	/**
+	 * @return the dataCriacao
+	 */
+	public Calendar getDataCriacao() {
+		return dataCriacao;
+	}
+
+	/**
+	 * @param dataCriacao
+	 *            the dataCriacao to set
+	 */
+	public void setDataCriacao(Calendar dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	/**
+	 * @return the dataDesativacao
+	 */
+	public Calendar getDataDesativacao() {
+		return dataDesativacao;
+	}
+
+	/**
+	 * @param dataDesativacao
+	 *            the dataDesativacao to set
+	 */
+	public void setDataDesativacao(Calendar dataDesativacao) {
+		this.dataDesativacao = dataDesativacao;
+	}
+
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
-		return idUsuarioEndereco;
+		return idPessoaEndereco;
 	}
 
 	@Override
 	public void setId(Long id) {
 		// TODO Auto-generated method stub
-		this.idUsuarioEndereco = id;
+		this.idPessoaEndereco = id;
 	}
 
 	@Override
@@ -114,29 +137,4 @@ public class UsuarioEndereco extends AEntity<UsuarioEndereco> {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	@Override
-	public Calendar getDataDesativacao() {
-		// TODO Auto-generated method stub
-		return dataDesativacao;
-	}
-
-	@Override
-	public void setDataDesativacao(Calendar dataDesativacao) {
-		// TODO Auto-generated method stub
-		this.dataDesativacao = dataDesativacao;
-	}
-
-	@Override
-	public Calendar getDataCriacao() {
-		// TODO Auto-generated method stub
-		return dataCriacao;
-	}
-
-	@Override
-	public void setDataCriacao(Calendar dataCriacao) {
-		// TODO Auto-generated method stub
-		this.dataCriacao = dataCriacao;
-	}
-
 }

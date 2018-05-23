@@ -53,12 +53,12 @@ public class UsuarioTestNG extends ATestDAO<Usuario> {
 		try {
 			usuario = new Usuario();
 			usuario.setCarteira(0D);
-			usuario.setCpf(cpf);
+			// usuario.setCpf(cpf);
 			usuario.setEmail(email);
-			usuario.setPrimeiroNome(primeiroNome);
-			usuario.setSobrenome(sobrenome);
-			String nomeCompleto = uf.getNomeCompleto(usuario);
-			usuario.setNomeCompleto(nomeCompleto);
+			// usuario.setPrimeiroNome(primeiroNome);
+			// usuario.setSobrenome(sobrenome);
+			// String nomeCompleto = uf.getNomeCompleto(usuario);
+			// usuario.setNomeCompleto(nomeCompleto);
 
 			usuario.setSalt(salt);
 			String senhaCripto = uf.senhaCriptografada(salt, senha);

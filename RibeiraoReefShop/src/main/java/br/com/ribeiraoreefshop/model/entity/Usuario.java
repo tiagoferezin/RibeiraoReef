@@ -49,22 +49,6 @@ public class Usuario extends AEntity<Usuario> {
 	private String email;
 
 	@Column(nullable = false)
-	private String nomeCompleto;
-
-	@Column(nullable = false)
-	private String primeiroNome;
-
-	private String nomeDoMeio;
-
-	@Column(nullable = false)
-	private String sobrenome;
-
-	@Column(nullable = false)
-	private String cpf;
-
-	private String cnpj;
-
-	@Column(nullable = false)
 	private Double carteira;
 
 	@Column(nullable = false)
@@ -136,96 +120,6 @@ public class Usuario extends AEntity<Usuario> {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	/**
-	 * @return the nomeCompleto
-	 */
-	public String getNomeCompleto() {
-		return nomeCompleto;
-	}
-
-	/**
-	 * @param nomeCompleto
-	 *            the nomeCompleto to set
-	 */
-	public void setNomeCompleto(String nomeCompleto) {
-		this.nomeCompleto = nomeCompleto;
-	}
-
-	/**
-	 * @return the primeiroNome
-	 */
-	public String getPrimeiroNome() {
-		return primeiroNome;
-	}
-
-	/**
-	 * @param primeiroNome
-	 *            the primeiroNome to set
-	 */
-	public void setPrimeiroNome(String primeiroNome) {
-		this.primeiroNome = primeiroNome;
-	}
-
-	/**
-	 * @return the nomeDoMeio
-	 */
-	public String getNomeDoMeio() {
-		return nomeDoMeio;
-	}
-
-	/**
-	 * @param nomeDoMeio
-	 *            the nomeDoMeio to set
-	 */
-	public void setNomeDoMeio(String nomeDoMeio) {
-		this.nomeDoMeio = nomeDoMeio;
-	}
-
-	/**
-	 * @return the sobrenome
-	 */
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	/**
-	 * @param sobrenome
-	 *            the sobrenome to set
-	 */
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
-	/**
-	 * @return the cpf
-	 */
-	public String getCpf() {
-		return cpf;
-	}
-
-	/**
-	 * @param cpf
-	 *            the cpf to set
-	 */
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	/**
-	 * @return the cnpj
-	 */
-	public String getCnpj() {
-		return cnpj;
-	}
-
-	/**
-	 * @param cnpj
-	 *            the cnpj to set
-	 */
-	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
 	}
 
 	/**

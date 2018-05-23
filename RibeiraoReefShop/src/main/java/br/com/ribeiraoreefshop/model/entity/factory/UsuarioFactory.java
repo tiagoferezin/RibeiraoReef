@@ -127,30 +127,7 @@ public class UsuarioFactory {
 		return result;
 	}
 
-	public String getNomeCompleto(Usuario usuario) {
-		String result = "";
-
-		List<String> listaNomeCompleto = new ArrayList<String>();
-		listaNomeCompleto.add(usuario.getPrimeiroNome());
-		listaNomeCompleto.add(usuario.getNomeDoMeio());
-		listaNomeCompleto.add(usuario.getSobrenome());
-
-		String nomeCompleto = "";
-
-		for (String s : listaNomeCompleto) {
-
-			if (s != null) {
-				nomeCompleto = nomeCompleto + " " + s;
-			}
-		}
-
-		nomeCompleto = Normalizacao.capitalizarTexto(nomeCompleto);
-		nomeCompleto = nomeCompleto.trim();
-		result = nomeCompleto;
-
-		return result;
-	}
-
+	
 	public String gerarUsername(Usuario usuario) {
 		String result = usuario.getUsername();
 
