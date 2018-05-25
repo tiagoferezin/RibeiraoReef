@@ -15,6 +15,7 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.ribeiraoreefshop.anotacao.AcessoPublico;
 import br.com.ribeiraoreefshop.dao.factory.GenericDAOFactory;
 import br.com.ribeiraoreefshop.model.entity.Produto;
 import br.com.ribeiraoreefshop.model.entity.factory.ProdutoFactory;
@@ -69,6 +70,7 @@ public class ProdutoController {
 
 	}
 
+	@AcessoPublico
 	@Post("/listar")
 	public List<Produto> listar() {
 		genericDAOFactory = new GenericDAOFactory();
