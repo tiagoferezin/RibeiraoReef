@@ -38,11 +38,14 @@ public class Pedido extends AEntity<Pedido> {
 	private Long idPedido;
 
 	@Column(nullable = false)
+	private String numeroPedido;
+
+	@Column(nullable = false)
 	private Integer quantidade;
-	
+
 	@Enumerated(EnumType.STRING)
 	private EStatus status;
-	
+
 	@OneToOne
 	@JoinColumn(name = "idEndereco", nullable = false)
 	private Endereco endereco;
@@ -56,6 +59,51 @@ public class Pedido extends AEntity<Pedido> {
 
 	public Pedido() {
 
+	}
+
+	/**
+	 * @return the numeroPedido
+	 */
+	public String getNumeroPedido() {
+		return numeroPedido;
+	}
+
+	/**
+	 * @param numeroPedido
+	 *            the numeroPedido to set
+	 */
+	public void setNumeroPedido(String numeroPedido) {
+		this.numeroPedido = numeroPedido;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public EStatus getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(EStatus status) {
+		this.status = status;
+	}
+
+	/**
+	 * @return the endereco
+	 */
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	/**
+	 * @param endereco
+	 *            the endereco to set
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	/**

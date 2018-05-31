@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.ribeiraoreefshop.model.controller;
+package br.com.ribeiraoreefshop.controller;
 
 import java.util.ArrayList;
 import java.util.List;

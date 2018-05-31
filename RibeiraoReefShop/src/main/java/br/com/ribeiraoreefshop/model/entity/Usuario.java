@@ -7,6 +7,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
-import br.com.ribeiraoreefshop.model.entity.AEntity;
+import br.com.ribeiraoreefshop.model.enumerador.ETipoUsuario;
 
 /**
  * @author Tiago Ferezin
@@ -51,6 +53,9 @@ public class Usuario extends AEntity<Usuario> {
 	@Column(nullable = false)
 	private Double carteira;
 
+	@Enumerated(EnumType.STRING)
+	private ETipoUsuario tipoUsuario;
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
@@ -60,6 +65,21 @@ public class Usuario extends AEntity<Usuario> {
 
 	public Usuario() {
 
+	}
+
+	/**
+	 * @return the tipoUsuario
+	 */
+	public ETipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	/**
+	 * @param tipoUsuario
+	 *            the tipoUsuario to set
+	 */
+	public void setTipoUsuario(ETipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	/**
@@ -161,7 +181,7 @@ public class Usuario extends AEntity<Usuario> {
 
 	/**
 	 * @param salt
-	 *            the salt to set
+	 *            the salt to set Tem que ser o username
 	 */
 	public void setSalt(String salt) {
 		this.salt = salt;

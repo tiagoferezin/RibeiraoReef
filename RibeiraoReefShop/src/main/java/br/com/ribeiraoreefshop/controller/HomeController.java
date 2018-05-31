@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.ribeiraoreefshop.model.controller;
+package br.com.ribeiraoreefshop.controller;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;

@@ -125,5 +125,15 @@ public class Normalizacao {
 	    arredondado /= (Math.pow(10, casas));
 	    return arredondado;
 	}
+	
+	public static Long retornaNumerosDaString(String palavra){
+		Long result = 0L;
+		
+		String c = palavra.replaceAll("[^0-9]", "");
+		
+		result = Long.parseLong(c);
+		
+		return result;
+	}
 
 }

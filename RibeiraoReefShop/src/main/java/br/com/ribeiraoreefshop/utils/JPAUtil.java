@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
  *
  */
 public class JPAUtil {
-	//	private EntityManagerFactory entityManagerFactory;
+		private EntityManagerFactory entityManagerFactory;
 //	
 //	
 //	public JPAUtil() {
@@ -35,10 +35,10 @@ public class JPAUtil {
 //        return entityManagerFactory.createEntityManager();
 //    }
 //
-////    public void close(@Disposes EntityManager em) {
-////        em.close();
-////    }
-//    
+//    public void close(@Disposes EntityManager em) {
+//        em.close();
+//    }
+    
 //    public void close(EntityManager em) {
 //        em.close();
 //    }

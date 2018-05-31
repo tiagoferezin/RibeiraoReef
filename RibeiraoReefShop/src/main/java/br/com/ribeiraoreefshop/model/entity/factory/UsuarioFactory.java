@@ -137,5 +137,13 @@ public class UsuarioFactory {
 		}
 		return result;
 	}
+	
+	public String gerarSalt(Usuario usuario){
+		String result = "";
+		
+		result = usuario.getEmail();
+		
+		return result;
+	}
 
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.ribeiraoreefshop.model.controller;
+package br.com.ribeiraoreefshop.controller;
 
 import javax.inject.Inject;
 
