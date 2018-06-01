@@ -53,6 +53,9 @@ public class Usuario extends AEntity<Usuario> {
 	@Column(nullable = false)
 	private Double carteira;
 
+	@Column(nullable = false)
+	private Integer pontos;
+
 	@Enumerated(EnumType.STRING)
 	private ETipoUsuario tipoUsuario;
 
@@ -215,6 +218,21 @@ public class Usuario extends AEntity<Usuario> {
 	public void setDataDesativacao(Calendar dataDesativacao) {
 		// TODO Auto-generated method stub
 		this.dataDesativacao = dataDesativacao;
+	}
+
+	/**
+	 * @return the pontos
+	 */
+	public Integer getPontos() {
+		return pontos;
+	}
+
+	/**
+	 * @param pontos
+	 *            the pontos to set
+	 */
+	public void setPontos(Integer pontos) {
+		this.pontos = pontos;
 	}
 
 }

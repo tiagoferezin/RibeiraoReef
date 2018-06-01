@@ -50,6 +50,12 @@ public class Pedido extends AEntity<Pedido> {
 	@JoinColumn(name = "idEndereco", nullable = false)
 	private Endereco endereco;
 
+	private Double valorSemFrete;
+
+	private Double valorComFrete;
+
+	private Integer pontos;
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataCriacao;
@@ -59,6 +65,51 @@ public class Pedido extends AEntity<Pedido> {
 
 	public Pedido() {
 
+	}
+
+	/**
+	 * @return the pontos
+	 */
+	public Integer getPontos() {
+		return pontos;
+	}
+
+	/**
+	 * @param pontos
+	 *            the pontos to set
+	 */
+	public void setPontos(Integer pontos) {
+		this.pontos = pontos;
+	}
+
+	/**
+	 * @return the valorSemFrete
+	 */
+	public Double getValorSemFrete() {
+		return valorSemFrete;
+	}
+
+	/**
+	 * @param valorSemFrete
+	 *            the valorSemFrete to set
+	 */
+	public void setValorSemFrete(Double valorSemFrete) {
+		this.valorSemFrete = valorSemFrete;
+	}
+
+	/**
+	 * @return the valorComFrete
+	 */
+	public Double getValorComFrete() {
+		return valorComFrete;
+	}
+
+	/**
+	 * @param valorComFrete
+	 *            the valorComFrete to set
+	 */
+	public void setValorComFrete(Double valorComFrete) {
+		this.valorComFrete = valorComFrete;
 	}
 
 	/**
