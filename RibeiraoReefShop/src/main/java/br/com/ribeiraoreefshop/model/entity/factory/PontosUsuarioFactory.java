@@ -55,15 +55,19 @@ public class PontosUsuarioFactory {
 		pontos = pedido.getPontos();
 
 		if (pontos > 0) {
-			String where = "(t.pedido = :pedido)";
-			List<NameValuePair> whereParameters = new ArrayList<NameValuePair>();
-			whereParameters.add(new NameValuePair("pedido", pedido));
-			pedidoUsuario = (PedidoUsuario) genericDAOFactory.read(
-					pedidoUsuario, entityManager, where, whereParameters);
 
-			Long idUsuario = pedidoUsuario.getUsuario().getIdUsuario();
-			usuario = (Usuario) genericDAOFactory.readPorId(usuario,
-					entityManager, idUsuario);
+			PedidoUsuarioFactory puf = new PedidoUsuarioFactory();
+			usuario = puf.getUsuarioDoPedido(pedido, entityManager);
+			// String where = "(t.pedido = :pedido)";
+			// List<NameValuePair> whereParameters = new
+			// ArrayList<NameValuePair>();
+			// whereParameters.add(new NameValuePair("pedido", pedido));
+			// pedidoUsuario = (PedidoUsuario) genericDAOFactory.read(
+			// pedidoUsuario, entityManager, where, whereParameters);
+			//
+			// Long idUsuario = pedidoUsuario.getUsuario().getIdUsuario();
+			// usuario = (Usuario) genericDAOFactory.readPorId(usuario,
+			// entityManager, idUsuario);
 
 			pontosDoUsuario = usuario.getPontos();
 
@@ -74,4 +78,26 @@ public class PontosUsuarioFactory {
 		}
 
 	}
+
+	public void removerPontosDoUsuario(Pedido pedido, Integer pontosUsados,
+			EntityManager entityManager) throws Exception {
+
+		GenericDAOFactory genericDAOFactory = new GenericDAOFactory();
+		Usuario usuario = new Usuario();
+		PedidoUsuarioFactory puf = new PedidoUsuarioFactory();
+		usuario = puf.getUsuarioDoPedido(pedido, entityManager);
+		Integer pontosUsuario = 0;
+		pontosUsuario = usuario.getPontos();
+
+		if (pontosUsuario > pontosUsados) {
+
+			Integer pontosRestantes = 0;
+			pontosRestantes = pontosUsuario - pontosUsados;
+			usuario.setPontos(pontosRestantes);
+			genericDAOFactory.update(usuario, entityManager);
+
+		}
+
+	}
+
 }

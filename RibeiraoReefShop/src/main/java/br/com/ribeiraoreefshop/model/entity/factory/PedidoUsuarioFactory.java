@@ -13,10 +13,9 @@ import br.com.ribeiraoreefshop.model.entity.Carrinho;
 import br.com.ribeiraoreefshop.model.entity.CarrinhoUsuario;
 import br.com.ribeiraoreefshop.model.entity.Pedido;
 import br.com.ribeiraoreefshop.model.entity.PedidoUsuario;
-import br.com.ribeiraoreefshop.model.entity.Pontos;
-import br.com.ribeiraoreefshop.model.entity.PontosPedido;
 import br.com.ribeiraoreefshop.model.entity.Produto;
 import br.com.ribeiraoreefshop.model.entity.Usuario;
+import br.com.ribeiraoreefshop.utils.NameValuePair;
 
 /**
  * @author Tiago Ferezin
@@ -49,6 +48,33 @@ public class PedidoUsuarioFactory {
 		pontosGeradoPedido = pontosPedidoFactory.pontosDoPedido(pedido,
 				entityManager);
 		pedido.setPontos(pontosGeradoPedido);
+
+	}
+
+	public Usuario getUsuarioDoPedido(Pedido pedido, EntityManager entityManager)
+			throws Exception {
+		Usuario result = new Usuario();
+		Usuario usuario = new Usuario();
+		genericDAOFactory = new GenericDAOFactory();
+
+		String where = "(t.pedido = :pedido)";
+		List<NameValuePair> whereParameters = new ArrayList<NameValuePair>();
+		whereParameters.add(new NameValuePair("pedido", pedido));
+
+		PedidoUsuario pedidoUsuario = new PedidoUsuario();
+		pedidoUsuario = (PedidoUsuario) genericDAOFactory.read(pedidoUsuario,
+				entityManager, where, whereParameters);
+
+		Long idUsuario = 0L;
+		if ((pedidoUsuario.getIdPedidoUsuario() != null)
+				&& (pedidoUsuario.getIdPedidoUsuario() > 0L)) {
+			idUsuario = pedidoUsuario.getUsuario().getIdUsuario();
+			if ((idUsuario != null) && (idUsuario > 0L)) {
+				result = (Usuario) genericDAOFactory.readPorId(usuario,
+						entityManager, idUsuario);
+			}
+		}
+		return result;
 
 	}
 
