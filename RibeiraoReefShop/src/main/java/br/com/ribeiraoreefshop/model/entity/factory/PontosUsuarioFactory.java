@@ -3,9 +3,6 @@
  */
 package br.com.ribeiraoreefshop.model.entity.factory;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 import br.com.ribeiraoreefshop.dao.factory.GenericDAOFactory;
@@ -13,7 +10,7 @@ import br.com.ribeiraoreefshop.model.entity.Pedido;
 import br.com.ribeiraoreefshop.model.entity.PedidoUsuario;
 import br.com.ribeiraoreefshop.model.entity.Pontos;
 import br.com.ribeiraoreefshop.model.entity.Usuario;
-import br.com.ribeiraoreefshop.utils.NameValuePair;
+import br.com.ribeiraoreefshop.utils.Normalizacao;
 
 /**
  * @author Tiago Ferezin Data: 01/06/2018
@@ -97,6 +94,25 @@ public class PontosUsuarioFactory {
 			genericDAOFactory.update(usuario, entityManager);
 
 		}
+
+	}
+
+	public Double descontoPelaPontuacao(Usuario usuario, Integer pontos,
+			EntityManager entityManager) throws Exception {
+		Double result = 0D;
+		GenericDAOFactory genericDAOFactory = new GenericDAOFactory();
+		Integer pontosDoUsuario = 0;
+		pontosDoUsuario = usuario.getPontos();
+		Pontos pontosConfig = new Pontos();
+		pontosConfig = (Pontos) genericDAOFactory.readAllActives(pontosConfig,
+				entityManager);
+		PontosFactory pf = new PontosFactory();
+
+		Double valorDoPonto = pf.valorDoPonto(pontosConfig);
+		result = pontos * valorDoPonto;
+		result = Normalizacao.arredondar(result, 2, 0);
+
+		return result;
 
 	}
 
