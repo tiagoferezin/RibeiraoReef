@@ -42,10 +42,12 @@
 
 	</section>
 
-
 	<main>
 	<section class="container" id="secao-login">
-		<jsp:include page="login.jsp" />
+	<div class="row">
+		<jsp:include page="painelUsuario.jsp" />
+		<jsp:include page="minhaConta.jsp" />
+		</div>
 	</section>
 	</main>
 	<section class="footer" id="secao-footer">
@@ -54,7 +56,7 @@
 
 	</section>
 
-<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
+	<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
 	<script type="text/javascript" src="${path}/static/js/login.js"></script>
 
 </body>

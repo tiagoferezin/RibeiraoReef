@@ -67,7 +67,7 @@ public class LoginController {
 				usuario.setSenha(pass);
 				usuarioRepositorio.save(usuario);
 				model.addAttribute("usuario", usuario);
-				retorno = minhaConta(usuario.getIdUsuario(), model);
+				retorno = "minhaConta/" + usuario.getIdUsuario();
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -82,7 +82,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String logar(@Valid @ModelAttribute Usuario usuario,
+	public String autenticar(@Valid @ModelAttribute Usuario usuario,
 			BindingResult bindingResult, Model model) {
 
 		System.out.println("Logando...");
@@ -124,7 +124,7 @@ public class LoginController {
 					autenticar = uf.chkAutenticar(user, senha);
 
 					if (autenticar == "") {
-						retorno = "login/dadosUsuario";
+						retorno = "minhaConta/"+user.getIdUsuario();
 					}
 
 				}

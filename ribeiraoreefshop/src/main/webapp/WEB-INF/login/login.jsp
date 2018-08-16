@@ -30,7 +30,7 @@
 			<div class="form-group col-md-12">
 				<button type="button" class="btn btn-success btn-entrar col-md-4">Entrar</button>
 				<button type="button"
-					class="btn btn-link btn-esqueci-senha col-md-4">Esqueci a
+					class="btn btn-link btn-esqueci-senha col-md-6">Esqueci a
 					senha</button>
 			</div>
 			<div class="form-group col-md-12"></div>
