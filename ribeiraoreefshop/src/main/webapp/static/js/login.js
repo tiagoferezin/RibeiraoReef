@@ -16,7 +16,6 @@ var aplicarListaners = function(){
 		var dadosUsuario = $('#form-login').serialize();
 		
 		$.post(url, dadosUsuario).done(function(pagina){
-			alert("Entrou no post");
 			aplicarListaners();
 		}).fail(function(){
 			alert("Erro de dados inseridos!" + dadosUsuario);

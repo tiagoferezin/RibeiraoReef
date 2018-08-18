@@ -16,6 +16,7 @@
 	scope="request" />
 <jsp:include page="../head.jsp" />
 
+
 </head>
 <body>
 
@@ -41,21 +42,31 @@
 		<jsp:include page="../header.jsp" />
 
 	</section>
-
+	
+	<section class="carrousse" >
+	
+	<jsp:include page="../carroussel.jsp" />
+	
+	</section>
 
 	<main>
-	<section class="container" id="secao-login">
-		<jsp:include page="login.jsp" />
-	</section>
+
+	<div class="container">
+		<!--Section: Products v.3-->
+		<section class="text-center mb-4">
+			<jsp:include page="frenteLoja.jsp" />
+
+		</section>
+	</div>
 	</main>
-	<section class="footer" id="secao-footer" style="position: absolute; bottom: 0; width: 100%;">
+
+	<section class="footer" id="secao-footer">
 
 		<jsp:include page="../footer.jsp" />
 
 	</section>
 
-<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
-	<script type="text/javascript" src="${path}/static/js/login.js"></script>
+	<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
 
 </body>
 </html>

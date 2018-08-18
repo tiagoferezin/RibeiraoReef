@@ -22,6 +22,8 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
+import br.com.ribeiraoreefshop.interceptor.AutorizadorInterceptor;
+
 /**
  * @author Tiago Ferezin Data: 13/08/2018
  */
@@ -30,6 +32,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 @ComponentScan(basePackages = "br.com.ribeiraoreefshop")
 public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 
+	
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 
@@ -46,13 +49,15 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 		LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
 		localeInterceptor.setParamName("lang");
 
+		AutorizadorInterceptor autorizador = new AutorizadorInterceptor();
 		registry.addInterceptor(localeInterceptor);
+		//registry.addInterceptor(autorizador);
 	}
 
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
-		resolver.setDefaultLocale(new Locale("en_US"));
+		resolver.setDefaultLocale(new Locale("pt_BR"));
 		return resolver;
 	}
 
@@ -66,8 +71,8 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("cliente/index");
-		registry.addViewController("/login").setViewName("cliente/login");
+		registry.addViewController("/").setViewName("index");
+		registry.addViewController("/login").setViewName("login");
 	}
 
 	@Override

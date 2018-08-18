@@ -86,9 +86,5 @@
   <!-- Navbar -->
 </div>
 
-<br>
-<br>
 
-<br>
-<br>
 

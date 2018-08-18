@@ -11,7 +11,7 @@
 
 
 	<div class="list-group wow fadeIn">
-    <a href="#" class="list-group-item active waves-effect" style="font-weight: 700;">
+    <a href="${path }/app/minhaConta/${usuario.idUsuario}" class="list-group-item active waves-effect" style="font-weight: 700;">
         Meus Dados
     </a>
     <a href="#" class="list-group-item list-group-item-action waves-effect" style="font-weight: 700;">Meus Pedidos</a>

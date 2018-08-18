@@ -6,6 +6,7 @@ package br.com.ribeiraoreefshop.controller;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/registrarUsuario")
 	public String registrar(@Valid @ModelAttribute Usuario usuario,
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult, Model model, HttpSession session) {
 		String retorno = paginaLogin();
 		UsuarioFactory uf = new UsuarioFactory();
 
@@ -67,7 +68,9 @@ public class LoginController {
 				usuario.setSenha(pass);
 				usuarioRepositorio.save(usuario);
 				model.addAttribute("usuario", usuario);
-				retorno = "minhaConta/" + usuario.getIdUsuario();
+				model.addAttribute("usuarioLogado", usuario);
+				session.setAttribute("usuarioLogado", usuario);
+				retorno = "redirect:minhaConta/" + usuario.getIdUsuario();
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,7 +86,7 @@ public class LoginController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String autenticar(@Valid @ModelAttribute Usuario usuario,
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult, Model model, HttpSession session) {
 
 		System.out.println("Logando...");
 		Usuario user = new Usuario();
@@ -124,7 +127,11 @@ public class LoginController {
 					autenticar = uf.chkAutenticar(user, senha);
 
 					if (autenticar == "") {
-						retorno = "minhaConta/"+user.getIdUsuario();
+						
+						model.addAttribute("usuarioLogado", usuario);
+						session.setAttribute("usuarioLogado", usuario);
+						retorno = "redirect:minhaConta/" + user.getIdUsuario();
+
 					}
 
 				}
@@ -136,21 +143,9 @@ public class LoginController {
 		}
 		model.addAttribute("usuario", user);
 		model.addAttribute("mensagemErro", autenticar);
+		System.out.println("O retorno esta assim: "+retorno);
 
 		return retorno;
-
-	}
-
-	@RequestMapping(method = RequestMethod.GET, value = "{idUsuario}")
-	public String minhaConta(@PathVariable Long idUsuario, Model model) {
-
-		Usuario usuario = new Usuario();
-
-		usuario = usuarioRepositorio.findOne(idUsuario);
-
-		model.addAttribute("usuario", usuario);
-
-		return "login/minhaConta";
 
 	}
 
