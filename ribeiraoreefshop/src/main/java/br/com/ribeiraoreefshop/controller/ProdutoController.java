@@ -3,8 +3,12 @@
  */
 package br.com.ribeiraoreefshop.controller;
 
+import java.io.IOException;
+
+import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
+import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.ribeiraoreefshop.exceptions.ProdutoInvalidException;
 import br.com.ribeiraoreefshop.model.entity.Produto;
+import br.com.ribeiraoreefshop.model.entity.factory.ImagemFactory;
 import br.com.ribeiraoreefshop.model.entity.factory.ProdutoFactory;
 import br.com.ribeiraoreefshop.model.repositories.ProdutoRepositorio;
 import br.com.ribeiraoreefshop.utils.Normalizacao;
@@ -33,6 +38,9 @@ public class ProdutoController {
 	@Autowired
 	private ProdutoRepositorio produtoRepositorio;
 
+	@Autowired
+	ServletContext context;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String listaProdutos(Model model) {
 		Iterable<Produto> listaProdutos = produtoRepositorio.findAll();
@@ -45,8 +53,16 @@ public class ProdutoController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvarProduto(@Valid @ModelAttribute Produto produto,
-			BindingResult bindingResult, Model model) {
+			BindingResult bindingResult, Model model, FileItem item) {
 
+		ImagemFactory imagemFactory = new ImagemFactory();
+
+		try {
+			imagemFactory.salvarImagem(item, context, "produtos");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ProdutoFactory pf = new ProdutoFactory();
 
 		Double total = 0D;
