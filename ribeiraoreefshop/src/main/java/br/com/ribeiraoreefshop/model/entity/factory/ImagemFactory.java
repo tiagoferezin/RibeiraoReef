@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,9 @@ import br.com.ribeiraoreefshop.model.repositories.ImagemRepositorio;
  */
 public class ImagemFactory {
 
-	public void salvarImagem(MultipartFile item, ServletContext context,
-			String nomePasta, Integer principal, ImagemRepositorio imagemRepositorio) throws IOException {
+	public void salvarImagem(MultipartFile item, HttpServletRequest context,
+			String nomePasta, Integer principal,
+			ImagemRepositorio imagemRepositorio) throws IOException {
 
 		String path = context.getRealPath("/resources/uploads");
 		Imagem imagem = new Imagem();
@@ -40,7 +42,7 @@ public class ImagemFactory {
 
 		String nomeArquivo = "";
 
-		nomeArquivo = item.getName();
+		nomeArquivo = item.getOriginalFilename();
 
 		String[] arq = nomeArquivo.split("\\\\");
 

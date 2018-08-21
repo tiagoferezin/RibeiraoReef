@@ -6,6 +6,7 @@ package br.com.ribeiraoreefshop.controller;
 import java.io.IOException;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,8 @@ public class ImagemController {
 	ServletContext context;
 	@Autowired
 	ImagemRepositorio imagemRepositorio;
+	@Autowired
+	HttpServletRequest request;
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String singleFileUpload(@RequestParam("file") MultipartFile file,
@@ -43,7 +46,7 @@ public class ImagemController {
 		ImagemFactory imagemFactory = new ImagemFactory();
 
 		try {
-			imagemFactory.salvarImagem(file, context, "produto", 0, imagemRepositorio);
+			imagemFactory.salvarImagem(file, request, "produto", 0, imagemRepositorio);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
