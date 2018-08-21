@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import br.com.ribeiraoreefshop.model.UsuarioLogado;
+
 
 /**
  * @author Tiago Ferezin Data: 17/08/2018

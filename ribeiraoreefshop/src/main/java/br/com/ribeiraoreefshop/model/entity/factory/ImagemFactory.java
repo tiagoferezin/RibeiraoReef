@@ -23,17 +23,14 @@ import br.com.ribeiraoreefshop.model.repositories.ImagemRepositorio;
  */
 public class ImagemFactory {
 
-	@Autowired
-	ImagemRepositorio imagemRepositorio;
-
 	public void salvarImagem(MultipartFile item, ServletContext context,
-			String nomePasta) throws IOException {
-		
+			String nomePasta, Integer principal, ImagemRepositorio imagemRepositorio) throws IOException {
+
 		String path = context.getRealPath("/resources/uploads");
 		Imagem imagem = new Imagem();
 		final String PATH_ARQUIVOS = path;
 		final String DIR_ATUAL = nomePasta;
-		final String PATH_ABSOLUTO = (PATH_ARQUIVOS + DIR_ATUAL);
+		final String PATH_ABSOLUTO = (PATH_ARQUIVOS + "/" + DIR_ATUAL);
 
 		File diretorio = new File(PATH_ABSOLUTO);
 
@@ -68,14 +65,19 @@ public class ImagemFactory {
 		String diretorioSalvo = "";
 
 		String nomeImagem = "";
-		nomeImagem = item.getName();
+		nomeImagem = item.getOriginalFilename();
 
 		diretorioSalvo = "/" + DIR_ATUAL + "/" + nomeImagem;
 
 		imagem.setCaminhoImagem(diretorioSalvo);
 		imagem.setNomeImagem(nomeImagem);
-
-		imagemRepositorio.save(imagem);
+		imagem.setPrincipal(principal);
+		try {
+			imagemRepositorio.save(imagem);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 
 	}
 

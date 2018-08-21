@@ -5,11 +5,14 @@ package br.com.ribeiraoreefshop.config;
 
 import java.util.Locale;
 
+import javax.servlet.MultipartConfigElement;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -56,7 +59,7 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	@Bean
 	public LocaleResolver localeResolver() {
 		SessionLocaleResolver resolver = new SessionLocaleResolver();
-		resolver.setDefaultLocale(new Locale("pt_BR"));
+		resolver.setDefaultLocale(new Locale("en_US"));
 		return resolver;
 	}
 
@@ -93,5 +96,21 @@ public class ConfiguracaoWeb extends WebMvcConfigurerAdapter {
 	// factory.setMaxRequestSize("500MB");
 	// return factory.createMultipartConfig();
 	// }
+	
+//	@Bean
+//	public MultipartConfigElement multipartConfigElement(){
+//	    MultipartConfigFactory multipartConfigFactory = new MultipartConfigFactory();
+//	    multipartConfigFactory.setMaxFileSize("10MB");
+//	    multipartConfigFactory.setMaxRequestSize("50MB");
+//	    return multipartConfigFactory.createMultipartConfig();
+//	}
+	
+	@Bean(name="multipartResolver")
+	public CommonsMultipartResolver commonsMultipartResolver(){
+	    CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver();
+	    commonsMultipartResolver.setDefaultEncoding("utf-8");
+	    commonsMultipartResolver.setMaxUploadSize(50000000);
+	    return commonsMultipartResolver;
+	}
 
 }

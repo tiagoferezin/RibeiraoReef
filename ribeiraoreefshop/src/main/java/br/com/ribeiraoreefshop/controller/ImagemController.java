@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.ribeiraoreefshop.model.entity.factory.ImagemFactory;
+import br.com.ribeiraoreefshop.model.repositories.ImagemRepositorio;
 
 /**
  * @author Tiago Ferezin Data: 20/08/2018
@@ -26,7 +27,9 @@ public class ImagemController {
 
 	@Autowired
 	ServletContext context;
-	
+	@Autowired
+	ImagemRepositorio imagemRepositorio;
+
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	public String singleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
@@ -37,16 +40,15 @@ public class ImagemController {
 			return "redirect:uploadStatus";
 		}
 
-	
 		ImagemFactory imagemFactory = new ImagemFactory();
-		
+
 		try {
-			imagemFactory.salvarImagem(file, context, "produto");
+			imagemFactory.salvarImagem(file, context, "produto", 0, imagemRepositorio);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return "redirect:produto";
 
 	}

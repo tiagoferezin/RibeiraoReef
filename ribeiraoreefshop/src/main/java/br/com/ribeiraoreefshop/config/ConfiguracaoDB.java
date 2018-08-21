@@ -31,8 +31,7 @@ public class ConfiguracaoDB {
 	public DataSource dataSource() throws IllegalStateException,
 			PropertyVetoException {
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
-		dataSource.setMaxIdleTimeExcessConnections(360);
-		dataSource.setUnreturnedConnectionTimeout(3600);
+		
 		dataSource.setDriverClass("org.postgresql.Driver");
 		dataSource
 				.setJdbcUrl("jdbc:postgresql://localhost:5432/ribeiraoreefshop");
@@ -59,10 +58,10 @@ public class ConfiguracaoDB {
 		jpaProterties.put("hibernate.show_sql", "true");
 		jpaProterties.put("hibernate.format_sql", "true");
 
-		jpaProterties.put("hibernate.c3p0.min_size", "5");
-		jpaProterties.put("hibernate.c3p0.max_size", "10");
-		jpaProterties.put("hibernate.c3p0.timeout", "1800");
-		jpaProterties.put("hibernate.c3p0.max_statements", "50");
+//		jpaProterties.put("hibernate.c3p0.min_size", "5");
+//		jpaProterties.put("hibernate.c3p0.max_size", "10");
+//		jpaProterties.put("hibernate.c3p0.timeout", "1800");
+//		jpaProterties.put("hibernate.c3p0.max_statements", "50");
 
 		entityManagerFactoryBean.setJpaProperties(jpaProterties);
 		return entityManagerFactoryBean;

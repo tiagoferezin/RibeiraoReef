@@ -35,14 +35,14 @@ public class Aplicacao implements WebApplicationInitializer {
 		Dynamic appServlet = servletContext.addServlet("appServlet",
 				new DispatcherServlet(webApplicationContext));
 
-//		File tempdir = (File) servletContext
-//				.getAttribute("javax.servlet.context.tempdir");
-//
-//		long maxUploadSizeInMb = 250L;
-//
-//		appServlet.setMultipartConfig(new MultipartConfigElement(tempdir
-//				.getAbsolutePath(), maxUploadSizeInMb, maxUploadSizeInMb * 2,
-//				(int) (maxUploadSizeInMb / 2)));
+		File tempdir = (File) servletContext
+				.getAttribute("javax.servlet.context.tempdir");
+
+		long maxUploadSizeInMb = 250L;
+
+		appServlet.setMultipartConfig(new MultipartConfigElement(tempdir
+				.getAbsolutePath(), maxUploadSizeInMb, maxUploadSizeInMb * 2,
+				(int) (maxUploadSizeInMb / 2)));
 
 		appServlet.setLoadOnStartup(1);
 		appServlet.addMapping("/app/*");
