@@ -10,54 +10,43 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<title>${titulo}</title>
 
 <c:set var="path" value="${pageContext.request.contextPath}"
 	scope="request" />
 
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/css/footerEspecial.css">
-<jsp:include page="../head.jsp" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/buttons/1.5.2/css/buttons.dataTables.min.css">
+
 
 </head>
 <body>
 
-	</br>
-	<c:if test="${not empty mensagemErro }">
-		<div class="container">
-
-			<div class="alert alert-danger">${mensagemErro }</div>
-
-		</div>
-	</c:if>
-
-	<c:if test="${not empty mensagemInfo }">
-		<div class="container">
-
-			<div class="alert alert-info">${mensagemInfo }</div>
-
-		</div>
-	</c:if>
-
-	<section class="header" id="secao-header">
+<section class="header" id="secao-header">
 
 		<jsp:include page="../header.jsp" />
 
 	</section>
-
+	
 	<main>
+	
 	<section class="container" id="secao-login">
-		<br>
-		<br>
-		<br>
-		<br>
-		<div class="row">
-			<jsp:include page="painelUsuario.jsp" />
-			<jsp:include page="minhaConta.jsp" />
+	<div class="row">
+		<jsp:include page="listaProdutos.jsp" />
 		</div>
 	</section>
+	
 	</main>
-	<section class="footer" id="secao-footer">
+
+
+<section class="footer" id="secao-footer">
 
 		<jsp:include page="../footer.jsp" />
 
@@ -65,6 +54,7 @@
 
 	<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
 	<script type="text/javascript" src="${path}/static/js/login.js"></script>
+
 
 </body>
 </html>

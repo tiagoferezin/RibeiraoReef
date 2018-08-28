@@ -43,18 +43,24 @@
 	</section>
 
 
-	<main>
+	<main> <br>
+	<br>
+	<br>
+	<br>
+
 	<section class="container" id="secao-login">
+
 		<jsp:include page="login.jsp" />
 	</section>
 	</main>
-	<section class="footer" id="secao-footer" style="position: absolute; bottom: 0; width: 100%;">
+	<section class="footer" id="secao-footer"
+		style="position: absolute; bottom: 0; width: 100%;">
 
 		<jsp:include page="../footer.jsp" />
 
 	</section>
 
-<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
+	<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
 	<script type="text/javascript" src="${path}/static/js/login.js"></script>
 
 </body>

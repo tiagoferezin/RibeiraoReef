@@ -14,9 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.ribeiraoreefshop.exceptions.LoginInvalidException;
 import br.com.ribeiraoreefshop.model.entity.Usuario;
@@ -41,6 +41,20 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String paginaLogin() {
 
+//		List<String> listaCat = new ArrayList<String>();
+//
+//		listaCat.add("Cat 1");
+//		listaCat.add("Cat 2");
+//		listaCat.add("Cat 3");
+//		listaCat.add("Cat 4");
+//		listaCat.add("Cat 5");
+//		
+//		Aba aba = new Aba();
+//		aba.setNome("Teste");
+//		aba.setCategoriasAba(listaCat);
+//		
+//		abaRepositorio.save(aba);
+//		
 		// model.addAttribute("titulo", "Login");
 		return "login/paginaLogin";
 	}
@@ -70,7 +84,7 @@ public class LoginController {
 				model.addAttribute("usuario", usuario);
 				model.addAttribute("usuarioLogado", usuario);
 				session.setAttribute("usuarioLogado", usuario);
-				retorno = "redirect:minhaConta/" + usuario.getIdUsuario();
+				retorno = "redirect:../minhaConta/" + usuario.getIdUsuario();
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -85,6 +99,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
+	@ResponseBody
 	public String autenticar(@Valid @ModelAttribute Usuario usuario,
 			BindingResult bindingResult, Model model, HttpSession session) {
 
@@ -126,11 +141,16 @@ public class LoginController {
 
 					autenticar = uf.chkAutenticar(user, senha);
 
-					if(autenticar.equals("")) {
-						
+					if (autenticar.equals("")) {
+
 						model.addAttribute("usuarioLogado", usuario);
 						session.setAttribute("usuarioLogado", usuario);
-						retorno = "redirect:minhaConta/" + user.getIdUsuario();
+						retorno = "redirect:../minhaConta/"
+								+ user.getIdUsuario();
+						model.addAttribute("usuario", user);
+						
+
+						return "redirect:../minhaConta/" + user.getIdUsuario();
 
 					}
 
@@ -143,7 +163,7 @@ public class LoginController {
 		}
 		model.addAttribute("usuario", user);
 		model.addAttribute("mensagemErro", autenticar);
-		System.out.println("O retorno esta assim: "+retorno);
+		System.out.println("O retorno esta assim: " + retorno);
 
 		return retorno;
 

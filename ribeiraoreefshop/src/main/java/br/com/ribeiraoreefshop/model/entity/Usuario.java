@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import br.com.ribeiraoreefshop.model.enumerador.ETipoPessoa;
+
 /**
  * @author Tiago Ferezin Data: 14/08/2018
  */
@@ -36,8 +38,25 @@ public class Usuario {
 	@Column(nullable = false)
 	private String salt;
 
+	private ETipoPessoa tipoPessoa;
+
 	public Usuario() {
 
+	}
+
+	/**
+	 * @return the tipoPessoa
+	 */
+	public ETipoPessoa getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	/**
+	 * @param tipoPessoa
+	 *            the tipoPessoa to set
+	 */
+	public void setTipoPessoa(ETipoPessoa tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
 	}
 
 	/**

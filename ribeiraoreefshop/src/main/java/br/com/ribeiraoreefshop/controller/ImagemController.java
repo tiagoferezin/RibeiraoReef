@@ -52,7 +52,7 @@ public class ImagemController {
 			e.printStackTrace();
 		}
 
-		return "redirect:produto";
+		return "redirect:../produto";
 
 	}
 

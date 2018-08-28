@@ -7,6 +7,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
+
+<c:set var="path" value="${pageContext.request.contextPath}"
+	scope="request" />
+	
 <div class= "row">
 <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
@@ -29,7 +33,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="${path }/app/home">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -55,14 +59,14 @@
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
-            <a class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> 1 </span>
+            <a href="${path }/app/carrinho/${usuario.idUsuario}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> ${quantidadeItensCarrinho } </span>
               <i class="fa fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> Cart </span>
+              <span class="clearfix d-none d-sm-inline-block"> Carrinho </span>
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
+            <a href="https://www.facebook.com/ribeiraoreef" class="nav-link waves-effect" target="_blank">
               <i class="fa fa-facebook"></i>
             </a>
           </li>

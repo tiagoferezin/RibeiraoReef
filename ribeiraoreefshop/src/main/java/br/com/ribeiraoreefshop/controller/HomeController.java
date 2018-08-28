@@ -16,27 +16,27 @@ import br.com.ribeiraoreefshop.model.entity.Produto;
 import br.com.ribeiraoreefshop.model.repositories.ProdutoRepositorio;
 
 /**
- * @author Tiago Ferezin
- * Data: 17/08/2018
+ * @author Tiago Ferezin Data: 17/08/2018
  */
 @Controller
-@RequestMapping("/")
+@RequestMapping({ "/", "", "/home" })
 public class HomeController {
 
-	@Autowired ProdutoRepositorio produtoRepositorio;
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String home(Model model){
-		
+	@Autowired
+	ProdutoRepositorio produtoRepositorio;
+
+	@RequestMapping(method = RequestMethod.GET)
+	public String home(Model model) {
+
 		Iterable<Produto> listaProdutos = produtoRepositorio.findAll();
-		
+
 		List<Produto> listaProduto = new ArrayList<Produto>();
-		
+
 		listaProduto = (List<Produto>) listaProdutos;
-		
+
 		model.addAttribute("listaProduto", listaProduto);
-		
+
 		return "home/home";
 	}
-	
+
 }

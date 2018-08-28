@@ -4,21 +4,14 @@
 
 $(document).ready(function() {
 
-	aplicarListaners();
-	
-
-});
-
-var aplicarListaners = function(){
-	
 	$('.btn-entrar').click(function(){
 		var url = "login";
 		var dadosUsuario = $('#form-login').serialize();
 		
 		$.post(url, dadosUsuario).done(function(pagina){
+			
+			alert("Post");
 			aplicarListaners();
-		}).fail(function(){
-			alert("Erro de dados inseridos!" + dadosUsuario);
 		});
 	});
 	
@@ -44,4 +37,5 @@ var aplicarListaners = function(){
 		
 	});
 	
-};
+
+});

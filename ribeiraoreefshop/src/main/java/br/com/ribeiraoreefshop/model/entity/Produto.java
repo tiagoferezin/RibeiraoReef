@@ -35,13 +35,32 @@ public class Produto {
 
 	private String breveDescricao;
 
+	@Column(columnDefinition = "text", length = 1000)
 	private String descricao;
 
 	@Column(nullable = false)
 	private Integer estoque;
 
+	@Column(nullable = false)
+	private Double peso;
+
 	public Produto() {
 
+	}
+
+	/**
+	 * @return the peso
+	 */
+	public Double getPeso() {
+		return peso;
+	}
+
+	/**
+	 * @param peso
+	 *            the peso to set
+	 */
+	public void setPeso(Double peso) {
+		this.peso = peso;
 	}
 
 	/**

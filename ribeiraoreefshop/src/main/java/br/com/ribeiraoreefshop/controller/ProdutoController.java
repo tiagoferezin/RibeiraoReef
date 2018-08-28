@@ -136,7 +136,6 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "{idProduto}")
-	@ResponseBody
 	public Produto buscarProduto(@PathVariable Long idProduto) {
 		Produto produto = new Produto();
 
