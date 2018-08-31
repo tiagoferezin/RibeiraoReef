@@ -32,7 +32,7 @@
 				<td><fmt:formatNumber value="${produto.valor}" type="currency" /></td>
 
 				<td><form method="POST"
-						action="${pageContext.request.contextPath}/app/imagem/upload"
+						action="${pageContext.request.contextPath}/app/imagem/upload/${produto.idProduto }"
 						enctype="multipart/form-data">
 						<input type="file" name="file" /><br /> <input type="submit"
 							value="Submit" />

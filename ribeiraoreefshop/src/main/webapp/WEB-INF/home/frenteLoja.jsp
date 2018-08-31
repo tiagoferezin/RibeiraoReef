@@ -31,12 +31,15 @@
 				<!--Card content-->
 				<div class="card-body text-center">
 					<!--Category & Title-->
-					<a href="" class="grey-text">
+					<a href="${path}/app/produto/detalheProduto/${produto.urlSlug}"
+						class="grey-text">
 						<h5>${produto.nomeProduto }</h5>
 					</a>
 					<h5>
-						<strong> <a href="" class="dark-grey-text">${produto.breveDescricao }
-								<span class="badge badge-pill danger-color">Novo</span>
+						<strong> <a
+							href="${path}/app/produto/detalheProduto/${produto.urlSlug}"
+							class="dark-grey-text">${produto.breveDescricao } <span
+								class="badge badge-pill danger-color">Novo</span>
 						</a>
 						</strong>
 					</h5>

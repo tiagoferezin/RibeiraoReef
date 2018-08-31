@@ -3,12 +3,12 @@
  */
 package br.com.ribeiraoreefshop.controller;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.validation.Valid;
 
-import org.apache.commons.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,11 +22,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.ribeiraoreefshop.exceptions.ProdutoInvalidException;
-import br.com.ribeiraoreefshop.model.entity.ImagemProduto;
+import br.com.ribeiraoreefshop.model.entity.Categoria;
+import br.com.ribeiraoreefshop.model.entity.Imagem;
+import br.com.ribeiraoreefshop.model.entity.InfoAdicional;
 import br.com.ribeiraoreefshop.model.entity.Produto;
-import br.com.ribeiraoreefshop.model.entity.factory.ImagemFactory;
 import br.com.ribeiraoreefshop.model.entity.factory.ProdutoFactory;
 import br.com.ribeiraoreefshop.model.repositories.ImagemProdutoRepositorio;
+import br.com.ribeiraoreefshop.model.repositories.InfoAdicionalProdutoRepositorio;
+import br.com.ribeiraoreefshop.model.repositories.ProdutoCategoriaRepositorio;
 import br.com.ribeiraoreefshop.model.repositories.ProdutoRepositorio;
 import br.com.ribeiraoreefshop.utils.Normalizacao;
 
@@ -44,6 +47,12 @@ public class ProdutoController {
 	private ImagemProdutoRepositorio imagemProdutoRepositorio;
 
 	@Autowired
+	private ProdutoCategoriaRepositorio produtoCategoriaRepositorio;
+
+	@Autowired
+	private InfoAdicionalProdutoRepositorio infoAdicionalProdutoRepositorio;
+
+	@Autowired
 	ServletContext context;
 
 	@RequestMapping(method = RequestMethod.GET)
@@ -56,22 +65,60 @@ public class ProdutoController {
 		return "produto/listaProduto";
 	}
 
-//	@RequestMapping("/uploadImagem{item}")
-//	@ResponseBody
-//	public String uploadImagem(@PathVariable FileItem item) {
-//
-//		String retorno = "";
-//		ImagemFactory imagemFactory = new ImagemFactory();
-//
-//		try {
-//			imagemFactory.salvarImagem(item, context, "produtos");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		return retorno;
-//
-//	}
+	@RequestMapping(method = RequestMethod.GET, value = "detalheProduto/{urlSlug}")
+	public String produto(@PathVariable String urlSlug, Model model) {
+
+		Produto produto = new Produto();
+
+		produto = produtoRepositorio.produtoPeloSlug(urlSlug);
+
+		List<Imagem> listaImagensProduto = new ArrayList<Imagem>();
+		List<Categoria> listaCategoriasProduto = new ArrayList<Categoria>();
+		List<InfoAdicional> listaInfoAdicionalProduto = new ArrayList<InfoAdicional>();
+
+		listaImagensProduto = imagemProdutoRepositorio
+				.imagensDoProduto(produto);
+
+		String urlImagem = "";
+
+		for (Imagem img : listaImagensProduto) {
+			if (img.getPrincipal() == 1) {
+				urlImagem = img.getCaminhoImagem();
+			}
+		}
+
+		listaCategoriasProduto = produtoCategoriaRepositorio
+				.categoriasDoProduto(produto);
+
+		listaInfoAdicionalProduto = infoAdicionalProdutoRepositorio
+				.informacoesDoProduto(produto);
+
+		model.addAttribute("produto", produto);
+		model.addAttribute("listaImagensProduto", listaImagensProduto);
+		model.addAttribute("listaCategoriasProduto", listaCategoriasProduto);
+		model.addAttribute("urlImagem", urlImagem);
+		model.addAttribute("listaInfoAdicionalProduto",
+				listaInfoAdicionalProduto);
+
+		return "produto/paginaProduto";
+	}
+
+	// @RequestMapping("/uploadImagem{item}")
+	// @ResponseBody
+	// public String uploadImagem(@PathVariable FileItem item) {
+	//
+	// String retorno = "";
+	// ImagemFactory imagemFactory = new ImagemFactory();
+	//
+	// try {
+	// imagemFactory.salvarImagem(item, context, "produtos");
+	// } catch (IOException e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// return retorno;
+	//
+	// }
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String salvarProduto(@Valid @ModelAttribute Produto produto,
@@ -85,6 +132,9 @@ public class ProdutoController {
 
 		if (produto.getValor() == null) {
 			produto.setValor(0D);
+		}
+		if (produto.getPeso() == null) {
+			produto.setPeso(0D);
 		}
 
 		String slug = "";
@@ -126,7 +176,6 @@ public class ProdutoController {
 
 			produtoRepositorio.save(produto);
 
-			
 		}
 
 		Iterable<Produto> listaProdutos = produtoRepositorio.findAll();
@@ -136,6 +185,7 @@ public class ProdutoController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "{idProduto}")
+	@ResponseBody
 	public Produto buscarProduto(@PathVariable Long idProduto) {
 		Produto produto = new Produto();
 

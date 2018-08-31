@@ -11,17 +11,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+
 <c:set var="path" value="${pageContext.request.contextPath}"
 	scope="request" />
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" type="text/css"
-	href="${path}/static/css/footerEspecial.css">
 <jsp:include page="../head.jsp" />
 
 
 </head>
 <body>
+
+	</br>
+	<c:if test="${not empty mensagemErro }">
+		<div class="container">
+
+			<div class="alert alert-danger">${mensagemErro }</div>
+
+		</div>
+	</c:if>
+
+	<c:if test="${not empty mensagemInfo }">
+		<div class="container">
+
+			<div class="alert alert-info">${mensagemInfo }</div>
+
+		</div>
+	</c:if>
 
 	<section class="header" id="secao-header">
 
@@ -29,17 +43,21 @@
 
 	</section>
 
+	<br>
+	<br>
+	<br>
+	<br>
+
 	<main>
-	<br><br><br><br>
 
-	<section class="container" id="secao-login">
-		<div class="row">
-			<jsp:include page="listaProdutos.jsp" />
-		</div>
-	</section>
+	<div class="container">
+		<!--Section: Products v.3-->
+		<section class="text-center mb-4">
+			<jsp:include page="produtoContainer.jsp" />
 
+		</section>
+	</div>
 	</main>
-
 
 	<section class="footer" id="secao-footer">
 
@@ -48,8 +66,6 @@
 	</section>
 
 	<script type="text/javascript" src="${path}/static/js/navbar.js"></script>
-	<script type="text/javascript" src="${path}/static/js/login.js"></script>
-
 
 </body>
 </html>

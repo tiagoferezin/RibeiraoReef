@@ -4,19 +4,18 @@
 package br.com.ribeiraoreefshop.model.entity.factory;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.FileItem;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ribeiraoreefshop.model.entity.Imagem;
+import br.com.ribeiraoreefshop.model.entity.ImagemProduto;
+import br.com.ribeiraoreefshop.model.entity.Produto;
+import br.com.ribeiraoreefshop.model.repositories.ImagemProdutoRepositorio;
 import br.com.ribeiraoreefshop.model.repositories.ImagemRepositorio;
 
 /**
@@ -26,10 +25,18 @@ public class ImagemFactory {
 
 	public void salvarImagem(MultipartFile item, HttpServletRequest context,
 			String nomePasta, Integer principal,
-			ImagemRepositorio imagemRepositorio) throws IOException {
+			ImagemRepositorio imagemRepositorio,
+			ImagemProdutoRepositorio imagemProdutoRepositorio, Produto produto)
+			throws IOException {
 
-		String path = context.getRealPath("/resources/uploads");
+		String path = context.getServletContext().getRealPath(
+				"/resources/uploads");
 		Imagem imagem = new Imagem();
+		String uri = context.getRequestURI();
+		StringBuffer url = context.getRequestURL();
+		String path1 = "/ribeiraoreefshop/src/main/webapp/resources/uploads";// context.getContextPath()
+																				// +
+																				// "/app/resources/uploads";
 		final String PATH_ARQUIVOS = path;
 		final String DIR_ATUAL = nomePasta;
 		final String PATH_ABSOLUTO = (PATH_ARQUIVOS + "/" + DIR_ATUAL);
@@ -74,8 +81,19 @@ public class ImagemFactory {
 		imagem.setCaminhoImagem(diretorioSalvo);
 		imagem.setNomeImagem(nomeImagem);
 		imagem.setPrincipal(principal);
+
+		ImagemProduto imagemProduto = new ImagemProduto();
+
 		try {
 			imagemRepositorio.save(imagem);
+
+			if (produto != null) {
+				
+				imagemProduto.setImagem(imagem);
+				imagemProduto.setProduto(produto);
+				imagemProdutoRepositorio.save(imagemProduto);
+
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

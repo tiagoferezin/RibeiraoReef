@@ -44,8 +44,57 @@ public class Produto {
 	@Column(nullable = false)
 	private Double peso;
 
+	private Double altura;
+	private Double comprimento;
+	private Double largura;
+
 	public Produto() {
 
+	}
+
+	/**
+	 * @return the altura
+	 */
+	public Double getAltura() {
+		return altura;
+	}
+
+	/**
+	 * @param altura
+	 *            the altura to set
+	 */
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+
+	/**
+	 * @return the comprimento
+	 */
+	public Double getComprimento() {
+		return comprimento;
+	}
+
+	/**
+	 * @param comprimento
+	 *            the comprimento to set
+	 */
+	public void setComprimento(Double comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	/**
+	 * @return the largura
+	 */
+	public Double getLargura() {
+		return largura;
+	}
+
+	/**
+	 * @param largura
+	 *            the largura to set
+	 */
+	public void setLargura(Double largura) {
+		this.largura = largura;
 	}
 
 	/**

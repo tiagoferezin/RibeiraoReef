@@ -24,9 +24,70 @@ public class Carrinho {
 	private Double total;
 
 	private Double totalComFreteCalculado;
+	
+	private Double pesoTotal;
+	private Double alturaTotal;
+	private Double comprimentoTotal;
+	private Double larguraTotal;
 
 	public Carrinho() {
 
+	}
+
+	/**
+	 * @return the pesoTotal
+	 */
+	public Double getPesoTotal() {
+		return pesoTotal;
+	}
+
+	/**
+	 * @param pesoTotal the pesoTotal to set
+	 */
+	public void setPesoTotal(Double pesoTotal) {
+		this.pesoTotal = pesoTotal;
+	}
+
+	/**
+	 * @return the alturaTotal
+	 */
+	public Double getAlturaTotal() {
+		return alturaTotal;
+	}
+
+	/**
+	 * @param alturaTotal the alturaTotal to set
+	 */
+	public void setAlturaTotal(Double alturaTotal) {
+		this.alturaTotal = alturaTotal;
+	}
+
+	/**
+	 * @return the comprimentoTotal
+	 */
+	public Double getComprimentoTotal() {
+		return comprimentoTotal;
+	}
+
+	/**
+	 * @param comprimentoTotal the comprimentoTotal to set
+	 */
+	public void setComprimentoTotal(Double comprimentoTotal) {
+		this.comprimentoTotal = comprimentoTotal;
+	}
+
+	/**
+	 * @return the larguraTotal
+	 */
+	public Double getLarguraTotal() {
+		return larguraTotal;
+	}
+
+	/**
+	 * @param larguraTotal the larguraTotal to set
+	 */
+	public void setLarguraTotal(Double larguraTotal) {
+		this.larguraTotal = larguraTotal;
 	}
 
 	/**
